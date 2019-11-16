@@ -46,6 +46,22 @@ exports.newLoadSchools = async (req, res) => {
     res.json(schoolsData);
 }
 
+exports.uploadSchool = async (req, res) => {
+    const schoolData = {
+        id_colegio: req.body.id_colegio
+    }
+    const schoolNewData = {
+        nombre_colegio: req.body.nombre_colegio,
+        ciudad: req.body.ciudad,
+        direccion: req.body.direccion,
+        telefono: req.body.telefono,
+        tipo_colegio: req.body.tipo_colegio,
+        calendario: req.body.calendario,
+    }
+    await School.updateOne({id_colegio: schoolData.id_colegioe}, {$set: schoolNewData}, {new: true});
+    res.json({status: 'Informacion Colegio Actualizado'});
+}
+
 exports.deleteSchool = async (req, res) => {
     console.log(req.body)
     const schoolData = {

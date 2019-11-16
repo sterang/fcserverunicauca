@@ -4,6 +4,6 @@ module.exports=(router)=> {
     router.post('/loadSchool', School.loadSchool);
     router.get('/loadAllSchools', School.allSchools);
     router.get('/newLoadSchools', School.newLoadSchools);
-    //router.put('/modifySchool', School.modifySchool);
+    router.post('/uploadSchool', School.uploadSchool);
     router.post('/deleteSchool', School.deleteSchool);
 }
