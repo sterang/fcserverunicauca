@@ -58,7 +58,7 @@ exports.uploadSchool = async (req, res) => {
         tipo_colegio: req.body.tipo_colegio,
         calendario: req.body.calendario,
     }
-    await School.updateOne({id_colegio: schoolData.id_colegioe}, {$set: schoolNewData}, {new: true});
+    await School.updateOne({id_colegio: schoolData.id_colegio}, {$set: schoolNewData}, {new: true});
     res.json({status: 'Informacion Colegio Actualizado'});
 }
 
