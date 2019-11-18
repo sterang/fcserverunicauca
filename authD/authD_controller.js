@@ -24,11 +24,11 @@ exports.createDocente = async (req, res, next)=>{
 exports.loginDocente = (req, res, next)=>{
     console.log('Entra al Bucle');
     const docenteData = {
-        nombre_usuario: req.body.nombre_usuario,
+        correo_electronico: req.body.correo_electronico,
         contrasena: req.body.contrasena
     }
     console.log(docenteData);
-    Docente.findOne({nombre_usuario: docenteData.nombre_usuario}, (err, teacher)=>{
+    Docente.findOne({correo_electronico: docenteData.correo_electronico}, (err, teacher)=>{
         if(err) return res.status(500).send(`Server Error`);
         if(!teacher){
             res.status(409).send({message:'Something Error'});
