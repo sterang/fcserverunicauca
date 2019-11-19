@@ -36,12 +36,21 @@ exports.loginEstudiante = (req, res, next)=>{
             if(resultContrasena==student.contrasena){
                 res.send({student});
             }else{
-                res.status(409).send({message: 'Something Wrong'});
+                res.status(409).send(null);
             }
         }
     })
 }
-
+exports.allStudents = (req,res,next)=>{
+    Estudiante.find(function(err, Students){
+        if(err) return res.status(500).send('Server Error');
+        if(!Students){
+            res.status(409).send({message:'Something Error'});
+        } else{
+            res.send(Students);
+        }
+    })
+}
 //id_estudiante	tipo_usuario	nombre_estudiante	
 //apellido_estudiante	grado_estudiante	
 //curso_estudiante	id_colegio	nombre_usuario	

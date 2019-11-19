@@ -45,6 +45,17 @@ exports.loadEvento = (req,res,next)=>{
         }
     })
 }
+
+exports.allEventos = (req,res,next)=>{
+    Eventos.find(function(err, eventStudents){
+        if(err) return res.status(500).send('Server Error');
+        if(!eventStudents){
+            res.status(409).send({message:'Something Error'});
+        } else{
+            res.send(eventStudents);
+        }
+    })
+}
 //id_evento	fecha	id_actividad	id_estudiante	
 //check_download	check_inicio	check_fin	
 //check_answer	count_video	check_video

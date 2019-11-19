@@ -7,7 +7,8 @@ const eventoSchema = new Schema({
     id_evento:{
         type: Number,
         required: true,
-        trim: true
+        trim: true,
+        unique: true
     },
     data_start:{
         type: String,
