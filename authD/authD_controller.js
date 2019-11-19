@@ -107,6 +107,21 @@ exports.uploadInfoLoginDocente = async (req, res) => {
     res.json({status: 'Informacion de Login Actualizada'});
 }
 
+exports.uploadDocente = async (req, res) => {
+    const docenteData = {
+        id_docente: req.body.id_docente
+    }
+    const docenteNewData = {
+        nombre_docente: req.body.nombre_docente,
+        apellido_docente: req.body.apellido_docente,
+        nombre_usuario: req.body.nombre_usuario,
+        contrasena: req.body.contrasena,
+        correo_electronico: req.body.correo_electronico
+    }
+    await Docente.updateOne({id_docente: docenteData.id_docente}, {$set: docenteNewData}, {new: true});
+    res.json({status: 'Informacion Docente Actualizada'});
+}
+
 exports.deleteDocente = async (req, res) => {
     console.log(req.body)
     const docenteData = {
