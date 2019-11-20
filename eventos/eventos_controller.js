@@ -3,6 +3,10 @@ const Eventos = require('./eventos_dao');
 exports.createEventos=(req,res,next)=>{
     const newEvento = {
         id_evento: req.body.id_evento,
+        data_start: req.body.data_start,
+        hour_start: req.body.hour_start,
+        data_end: req.body.data_end,
+        hour_end: req.body.hour_end,
         fecha: req.body.fecha,
         id_actividad: req.body.id_actividad,
         id_estudiante: req.body.id_estudiante,
@@ -11,6 +15,12 @@ exports.createEventos=(req,res,next)=>{
         check_fin: req.body.check_fin,
         check_answer: req.body.check_answer,
         count_video: req.body.count_video,
+        check_video: req.body.check_video,
+        check_document: req.body.check_document,
+        check_a1: req.body.check_a1,
+        check_a2: req.body.check_a2,
+        check_a3: req.body.check_a3,
+        check_profile: req.body.check_profile,
         check_video: req.body.check_video
     }
     //id_evento	data_start	hour_start	data_hours_end	hour_end
@@ -37,7 +47,6 @@ exports.loadEvento = (req,res,next)=>{
         }
     })
 }
-
 exports.allEventos = (req,res,next)=>{
     Eventos.find(function(err, eventStudents){
         if(err) return res.status(500).send('Server Error');
@@ -47,6 +56,23 @@ exports.allEventos = (req,res,next)=>{
             res.send(eventStudents);
         }
     })
+}
+exports.generateMetrics=(req,res,next)=>{
+    const contentData={
+        id_estudiante: req.body.id_estudiante,
+    }
+    Eventos.find({id_estudiante: contentData.id_estudiante},(err,eventsMetrics)=>{
+        if(err) return res.status(500).send('Server Error');
+        if(!eventsMetrics){
+            res.status(409).send({message:'Something Error'});
+        }else{
+            var dataEvents = eventsMetrics;
+            console.log(dataEvents);
+            res.send(dataEvents);
+        }
+    })
+
+
 }
 //id_evento	fecha	id_actividad	id_estudiante	
 //check_download	check_inicio	check_fin	

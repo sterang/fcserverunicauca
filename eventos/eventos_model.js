@@ -10,9 +10,20 @@ const eventoSchema = new Schema({
         trim: true,
         unique: true
     },
-    fecha:{
+    data_start:{
         type: String,
-        required:true,
+        trim: true
+    },
+    hour_start:{
+        type: String,
+        trim: true
+    },
+    data_end:{
+        type: String,
+        trim: true
+    },
+    hour_end:{
+        type: String,
         trim: true
     },
     id_actividad:{
@@ -73,7 +84,7 @@ const eventoSchema = new Schema({
 })
 
 
-    //id_evento	data_start	hour_start	data_hours_end	hour_end
+    //id_evento	data_start	hour_start	data_end	hour_end
     //	id_actividad	id_estudiante	check_download	check_inicio	
     //check_fin	check_answer	count_video	check_video	check_document
     //	check_a1	check_a2	check_a3	check_profile
