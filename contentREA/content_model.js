@@ -40,6 +40,7 @@ const contentSchema = new Schema({
     },
     descripcion_CREA:{
         type: String,
+        required: true,
         trim: true,
     },
     en_uso:{
