@@ -14,6 +14,7 @@ const schoolRoutes = require('./school/school_routes');
 const subjectActiveRoutes = require('./subjectActive/subjectActive_routes');
 const areaSubjectRoutes = require('./areaSubject/areaSubject_routes');
 const AdministradorRoutes = require('./authAdmin/authAdmin_routes');
+const dudasRoutes = require('./dudas/dudas_routes');
 //const properties = require('./config/properties');
 const DB = require('./config/db');
 //init DB
@@ -62,6 +63,7 @@ schoolRoutes(router);
 subjectActiveRoutes(router);
 areaSubjectRoutes(router);
 AdministradorRoutes(router);
+dudasRoutes(router);
 
 router.get('/',(req, res)=>{
     res.send('Hello From home');
