@@ -40,7 +40,27 @@ exports.createActivity = (req,res,next)=>{
         A32: req.body.A32,
         A33: req.body.A33,
         A34: req.body.A34,
-        CA3: req.body.CA3
+        CA3: req.body.CA3,
+        evaluacion: req.body.evaluacion,
+        descripcion_evaluacion: req.body.descripcion_evaluacion,
+        EQ1: req.body.EQ1,
+        EA11: req.body.EA11,
+        EA12: req.body.EA12,
+        EA13: req.body.EA13,
+        EA14: req.body.EA14,
+        ECA1: req.body.ECA1,
+        EQ2: req.body.EQ2,
+        EA21: req.body.EA21,
+        EA22: req.body.EA22,
+        EA23: req.body.EA23,
+        EA24: req.body.EA24,
+        ECA2: req.body.ECA2,
+        EQ3: req.body.EQ3,
+        EA31: req.body.EA31,
+        EA32: req.body.EA32,
+        EA33: req.body.EA33,
+        EA34: req.body.EA34,
+        ECA3: req.body.ECA3
     }
     console.log(newActivities);
     Activities.create(newActivities,(err,activity)=>{
@@ -115,7 +135,27 @@ exports.uploadActivity = async (req, res) => {
         A32: req.body.A32,
         A33: req.body.A33,
         A34: req.body.A34,
-        CA3: req.body.CA3
+        CA3: req.body.CA3,
+        evaluacion: req.body.evaluacion,
+        descripcion_evaluacion: req.body.descripcion_evaluacion,
+        EQ1: req.body.EQ1,
+        EA11: req.body.EA11,
+        EA12: req.body.EA12,
+        EA13: req.body.EA13,
+        EA14: req.body.EA14,
+        ECA1: req.body.ECA1,
+        EQ2: req.body.EQ2,
+        EA21: req.body.EA21,
+        EA22: req.body.EA22,
+        EA23: req.body.EA23,
+        EA24: req.body.EA24,
+        ECA2: req.body.ECA2,
+        EQ3: req.body.EQ3,
+        EA31: req.body.EA31,
+        EA32: req.body.EA32,
+        EA33: req.body.EA33,
+        EA34: req.body.EA34,
+        ECA3: req.body.ECA3
     }
     await Activities.updateOne({id_actividad: activityData.id_actividad}, {$set: activityNewData}, {new: true});
     res.json({status: 'Actividad Actualizada'});

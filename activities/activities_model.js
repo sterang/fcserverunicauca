@@ -166,6 +166,86 @@ const activitySchema = new Schema({
         type: Number,
         trim: true,
     },
+    evaluacion:{
+        type: Number,
+        trim: true,
+    },
+    descripcion_evaluacion:{
+        type: String,
+        trim: true,
+    },
+    EQ1:{
+        type: String,
+        trim: true,
+    },
+    EA11:{
+        type: String,
+        trim: true,
+    },
+    EA12:{
+        type: String,
+        trim: true,
+    },
+    EA13:{
+        type: String,
+        trim: true,
+    },
+    EA14:{
+        type: String,
+        trim: true,
+    },
+    ECA1:{
+        type: Number,
+        trim: true,
+    },
+    EQ2:{
+        type: String,
+        trim: true,
+    },
+    EA21:{
+        type: String,
+        trim: true,
+    },
+    EA22:{
+        type: String,
+        trim: true,
+    },
+    EA23:{
+        type: String,
+        trim: true,
+    },
+    EA24:{
+        type: String,
+        trim: true,
+    },
+    ECA2:{
+        type: Number,
+        trim: true,
+    },
+    EQ3:{
+        type: String,
+        trim: true,
+    },
+    EA31:{
+        type: String,
+        trim: true,
+    },
+    EA32:{
+        type: String,
+        trim: true,
+    },
+    EA33:{
+        type: String,
+        trim: true,
+    },
+    EA34:{
+        type: String,
+        trim: true,
+    },
+    ECA3:{
+        type: Number,
+        trim: true,
+    }
 }, {timestamps: true});
 
 module.exports = activitySchema;
