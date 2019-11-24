@@ -8,6 +8,11 @@ const schoolSchema = new Schema({
         required: true,
         trim: true,
     },
+    NIT:{
+        type: Number,
+        required: true,
+        trim: true,
+    },
     nombre_colegio:{
         type: String,
         required: true,
@@ -34,6 +39,11 @@ const schoolSchema = new Schema({
         trim: true,
     },
     calendario:{
+        type: String,
+        required: true,
+        trim: true,
+    },
+    rector:{
         type: String,
         required: true,
         trim: true,

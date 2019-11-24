@@ -3,12 +3,14 @@ const School = require('./school_dao');
 exports.createSchool = async (req, res, next)=>{
     const newSchool = {
         id_colegio: req.body.id_colegio,
+        NIT: req.body.NIT,
         nombre_colegio: req.body.nombre_colegio,
         ciudad: req.body.ciudad,
         direccion: req.body.direccion,
         telefono: req.body.telefono,
         tipo_colegio: req.body.tipo_colegio,
         calendario: req.body.calendario,
+        rector: req.body.rector,
         colegioActivo: req.body.colegioActivo
     }
     console.log(newSchool);
@@ -51,12 +53,14 @@ exports.uploadSchool = async (req, res) => {
         id_colegio: req.body.id_colegio
     }
     const schoolNewData = {
+        NIT: req.body.NIT,
         nombre_colegio: req.body.nombre_colegio,
         ciudad: req.body.ciudad,
         direccion: req.body.direccion,
         telefono: req.body.telefono,
         tipo_colegio: req.body.tipo_colegio,
         calendario: req.body.calendario,
+        rector: req.body.rector,
     }
     await School.updateOne({id_colegio: schoolData.id_colegio}, {$set: schoolNewData}, {new: true});
     res.json({status: 'Informacion Colegio Actualizado'});
