@@ -3,6 +3,7 @@ const Subject = require('./subject_dao');
 exports.createSubject = async (req, res, next)=>{
     const newSubject = {
         id_materia: req.body.id_materia,
+        cont: req.body.cont,
         nombre_materia: req.body.nombre_materia,
         id_colegio: req.body.id_colegio,
         id_areaMateria: req.body.id_areaMateria,
@@ -52,6 +53,6 @@ exports.deleteSubject = async (req, res) => {
     res.json({Estado: 'Materia Eliminada' })
 }
 
-//id_materia	id_colegio
+//id_materia  cont 	id_colegio
 
 //nombre_materia	url_imagen	

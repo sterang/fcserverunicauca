@@ -3,6 +3,8 @@ const Competencia = require('./competencia_dao');
 exports.createCompetencia = async (req, res, next)=>{
     const newCompetencia = {
         id_competencia: req.body.id_competencia,
+        cont: req.body.cont,
+        id_colegio: req.body.id_colegio,
         nombre_competencia: req.body.nombre_competencia,
         id_areaMateria: req.body.id_areaMateria,
         gradoInicial: req.body.gradoInicial,

@@ -3,6 +3,8 @@ const AreaSubject = require('./areaSubject_dao');
 exports.createAreaSubject = async (req, res, next)=>{
     const newAreaSubject = {
         id_areaMateria: req.body.id_areaMateria,
+        cont: req.body.cont,
+        id_colegio: req.body.id_colegio,
         nombre_areaMateria: req.body.nombre_areaMateria
     }
     console.log(newAreaSubject);

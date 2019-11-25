@@ -8,6 +8,16 @@ const competenciaSchema = new Schema({
         required: true,
         trim: true,
     },
+    cont:{
+        type: Number,
+        required: true,
+        trim: true,
+    },
+    id_colegio:{
+        type: Number,
+        required: true,
+        trim: true,
+    },
     nombre_competencia:{
         type: String,
         required: true,

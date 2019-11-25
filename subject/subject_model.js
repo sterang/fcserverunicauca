@@ -8,6 +8,11 @@ const subjectSchema = new Schema({
         required: true,
         trim: true,
     },
+    cont:{
+        type: Number,
+        required: true,
+        trim: true,
+    },
     nombre_materia:{
         type: String,
         required: true,

@@ -8,6 +8,16 @@ const areaSubjectSchema = new Schema({
         required: true,
         trim: true,
     },
+    cont:{
+        type: Number,
+        required: true,
+        trim: true,
+    },
+    id_colegio:{
+        type: Number,
+        required: true,
+        trim: true,
+    },
     nombre_areaMateria:{
         type: String,
         required: true,
