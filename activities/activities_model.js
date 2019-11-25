@@ -8,6 +8,11 @@ const activitySchema = new Schema({
         required: true,
         trim: true,
     },
+    cont:{
+        type: Number,
+        required: true,
+        trim: true,
+    },
     id_colegio:{
         type: Number,
         required: true,

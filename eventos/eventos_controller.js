@@ -7,7 +7,6 @@ exports.createEventos=(req,res,next)=>{
         hour_start: req.body.hour_start,
         data_end: req.body.data_end,
         hour_end: req.body.hour_end,
-        fecha: req.body.fecha,
         id_actividad: req.body.id_actividad,
         id_estudiante: req.body.id_estudiante,
         check_download: req.body.check_download,

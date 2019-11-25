@@ -3,6 +3,7 @@ const Activities = require('./activities_dao');
 exports.createActivity = (req,res,next)=>{
     const newActivities = {
         id_actividad: req.body.id_actividad,
+        cont: req.body.cont,
         id_colegio: req.body.id_colegio,
         id_docente: req.body.id_docente,
         id_materia: req.body.id_materia,
