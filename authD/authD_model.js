@@ -8,6 +8,11 @@ const docenteSchema = new Schema({
         required: true,
         trim: true,
     },
+    cont:{
+        type: Number,
+        required: true,
+        trim: true,
+    },
     tipo_usuario:{
         type: Number,
         required: true,
@@ -44,7 +49,7 @@ const docenteSchema = new Schema({
         trim: true,
         unique: true,
     },
-  //id_docente	tipo_usuario	nombre_docente	apellido_docente	
+  //id_docente cont	tipo_usuario	nombre_docente	apellido_docente	
 //id_colegio	id_materia1	id_materia2	grado10_materia1	grado11_materia1
 //	grado10_materia2	grado11_materia2	nombre_usuario	contraseña	correo_electronico
 

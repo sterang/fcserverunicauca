@@ -3,10 +3,12 @@ const ContentREA = require('./content_dao');
 exports.createContentREA = async (req, res, next)=>{
     const newContentREA = {
         id_CREA: req.body.id_CREA,
+        cont: req.body.cont,
         tipo_CREA: req.body.tipo_CREA,
         id_docente: req.body.id_docente,
         id_materia: req.body.id_materia,
         id_grado: req.body.id_grado,
+        id_colegio: req.body.id_colegio,
         nombre_CREA: req.body.nombre_CREA,
         urlrepositorio: req.body.urlrepositorio,
         descripcion_CREA: req.body.descripcion_CREA,

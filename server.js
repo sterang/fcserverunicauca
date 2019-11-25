@@ -69,6 +69,12 @@ router.get('/',(req, res)=>{
     res.send('Hello From home');
 });
 
+router.get('/prueba',(req, res)=>{
+    res.json({
+        'url': `prueba`
+    });
+});
+
 app.use(router);
 app.use(express.static('public'));
 //Newww for Upload

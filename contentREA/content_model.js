@@ -8,6 +8,11 @@ const contentSchema = new Schema({
         required: true,
         trim: true,
     },
+    cont:{
+        type: Number,
+        required: true,
+        trim: true,
+    },
     tipo_CREA:{
         type: Number,
         required: true,
@@ -24,6 +29,11 @@ const contentSchema = new Schema({
         trim: true,
     },
     id_grado:{
+        type: Number,
+        required: true,
+        trim: true,
+    },
+    id_colegio:{
         type: Number,
         required: true,
         trim: true,
@@ -52,6 +62,6 @@ const contentSchema = new Schema({
 
 module.exports = contentSchema;
 //module.exports = mongoose.model('contents', contentSchema);
-//id_CREA	tipo_CREA	id_materia	grado10	
+//id_CREA  cont  tipo_CREA	 id_materia	 grado10  id_colegio	
 //grado11	
 //nombre_CREA	urlrepositorio	descripcion_CREA

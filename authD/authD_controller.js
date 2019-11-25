@@ -6,6 +6,7 @@ const SECRET_KEY = 'secretkey1234'
 exports.createDocente = async (req, res, next)=>{
     const newDocente = {
         id_docente: req.body.id_docente,
+        cont: req.body.cont,
         tipo_usuario: req.body.tipo_usuario,
         nombre_docente: req.body.nombre_docente,
         apellido_docente: req.body.apellido_docente,
@@ -39,6 +40,7 @@ exports.loginDocente = (req, res, next)=>{
                 const accessToken = jwt.sign({ id_docente: docenteData.id_docente }, SECRET_KEY, { expiresIn: expiresInA });
                 const dataDocente = {
                     id_docente: teacher.id_docente,
+                    cont: teacher.cont,
                     tipo_usuario: teacher.tipo_usuario,
                     nombre_docente: teacher.nombre_docente,
                     apellido_docente: teacher.apellido_docente,
