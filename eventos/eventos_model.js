@@ -79,7 +79,20 @@ const eventoSchema = new Schema({
     check_profile:{
         type:Number,
         trim: true
-    }
+    },
+    check_Ea1:{
+        type:Number,
+        trim: true
+    },
+    check_Ea2:{
+        type:Number,
+        trim: true
+    },
+    check_Ea3:{
+        type:Number,
+        trim: true
+    },
+
 
 })
 
