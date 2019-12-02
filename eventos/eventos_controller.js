@@ -22,7 +22,8 @@ exports.createEventos=(req,res,next)=>{
         check_profile: req.body.check_profile,
         check_Ea1: req.body.check_Ea1,
         check_Ea2: req.body.check_Ea2,
-        check_Ea3: req.body.check_Ea3
+        check_Ea3: req.body.check_Ea3,
+        oculto: 0
     }
     //id_evento	data_start	hour_start	data_hours_end	hour_end
     //	id_actividad	id_estudiante	check_download	check_inicio	
