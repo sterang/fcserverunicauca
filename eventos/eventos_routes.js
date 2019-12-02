@@ -4,4 +4,6 @@ module.exports=(router)=> {
     router.post('/loadEvento', Eventos.loadEvento);
     router.get('/loadAllEvento', Eventos.allEventos);
     router.post('/generateMetrica', Eventos.generateMetrics);
+    router.post('/uploadEvento', Eventos.uploadEvento);
+    router.post('/uploadEstadoEvento', Eventos.uploadEstadoEvento);
 }
