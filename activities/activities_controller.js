@@ -61,7 +61,9 @@ exports.createActivity = (req,res,next)=>{
         EA32: req.body.EA32,
         EA33: req.body.EA33,
         EA34: req.body.EA34,
-        ECA3: req.body.ECA3
+        ECA3: req.body.ECA3,
+        autor: req.body.autor,
+        id_autor: req.body.id_autor
     }
     console.log(newActivities);
     Activities.create(newActivities,(err,activity)=>{

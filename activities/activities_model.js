@@ -302,6 +302,16 @@ const activitySchema = new Schema({
         type: Number,
         required: true,
         trim: true,
+    },
+    autor:{
+        type: String,
+        required: true,
+        trim: true,
+    },
+    id_autor:{
+        type: Number,
+        required: true,
+        trim: true,
     }
 }, {timestamps: true});
 
