@@ -5,7 +5,7 @@ exports.createType = async (req, res, next)=>{
         id_tipoContenido: req.body.id_tipoContenido,
         nombre_tipoContenido: req.body.nombre_tipoContenido
     }
-    console.log(newType);
+    //console.log(newType);
     await Type.create(newType,(err,type)=>{
         if(err) return res.status(500).send(`Server Error`);
         res.send({type});
@@ -41,7 +41,7 @@ exports.newLoadTypes = async (req, res) => {
 }
 
 exports.deleteType = async (req, res) => {
-    console.log(req.body)
+    //console.log(req.body)
     const typeData = {
         id_tipoContenido: req.body.id_tipoContenido
     }

@@ -9,7 +9,7 @@ exports.createSubject = async (req, res, next)=>{
         id_areaMateria: req.body.id_areaMateria,
         url_imagen: req.body.url_imagen
     }
-    console.log(newSubject);
+    //console.log(newSubject);
     await Subject.create(newSubject,(err,subject)=>{
         if(err) return res.status(500).send(`Server Error`);
         res.send({subject});
@@ -45,7 +45,7 @@ exports.newLoadSubjects = async (req, res) => {
 }
 
 exports.deleteSubject = async (req, res) => {
-    console.log(req.body)
+    //console.log(req.body)
     const subjectData = {
         id_materia: req.body.id_materia
     }

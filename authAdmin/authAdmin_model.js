@@ -6,27 +6,28 @@ const adminSchema = new Schema({
     id_admin:{
         type: Number,
         required: true,
-        trim: true,
+        unique: true,
+        trim: true
     },
     tipo_usuario:{
         type: Number,
         required: true,
-        trim: true,
+        trim: true
     },
     id_colegio:{
         type: Number,
-        trim: true,
+        trim: true
     },
     nombre_usuario:{
         type: String,
         required: true,
         trim: true,
-        unique: true,
+        unique: true
     },
     contrasena:{
         type: String,
         required: true,
-        trim: true,
+        trim: true
     },
     //id_admin	tipo_usuario	
     //id_colegio	

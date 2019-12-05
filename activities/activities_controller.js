@@ -65,7 +65,7 @@ exports.createActivity = (req,res,next)=>{
         autor: req.body.autor,
         id_autor: req.body.id_autor
     }
-    console.log(newActivities);
+    //console.log(newActivities);
     Activities.create(newActivities,(err,activity)=>{
         if (err) return res.status(500).send('Server Error Create');
         res.send({activity});
@@ -76,7 +76,7 @@ exports.loadActivity = (req, res, next)=>{
     const activityData={
         id_actividad: req.body.id_actividad,
     }
-    console.log(activityData);
+    //console.log(activityData);
     Activities.findOne({id_actividad: activityData.id_actividad}, (err, activity)=>{
         if(err) return res.status(500).send('Server Error');
         if(!activity){
@@ -167,7 +167,7 @@ exports.uploadActivity = async (req, res) => {
 
 
 exports.deleteActivity = async (req, res) => {
-    console.log(req.body)
+    //console.log(req.body)
     const activityData = {
         id_actividad: req.body.id_actividad
     }

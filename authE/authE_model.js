@@ -6,54 +6,55 @@ const estudianteSchema = new Schema({
     id_estudiante:{
         type: Number,
         required: true,
-        trim: true,
+        unique: true,
+        trim: true
     },
     tipo_usuario:{
         type: Number,
         required: true,
-        trim: true,
+        trim: true
     },
     nombre_estudiante:{
         type: String,
         required: true,
-        trim: true,
+        trim: true
     },
     apellido_estudiante:{
         type: String,
         required: true,
-        trim: true,
+        trim: true
     },
     grado_estudiante:{
         type: Number,
         required: true,
-        trim: true,
+        trim: true
     },
     curso_estudiante:{
         type: Number,
         required: true,
-        trim: true,
+        trim: true
     },
     id_colegio:{
         type: Number,
         required: true,
-        trim: true,
+        trim: true
     },
     nombre_usuario:{
         type: String,
         required: true,
         trim: true,
-        unique: true,
+        unique: true
     },
     contrasena:{
         type: String,
         required: true,
-        trim: true,
+        trim: true
     },
     correo_electronico:{
         type: String,
         required: true,
         trim: true,
-        unique: true,
+        unique: true
     },
 },{timestamps: true});
 

@@ -6,12 +6,13 @@ const gradeSchema = new Schema({
     id_grado:{
         type: Number,
         required: true,
-        trim: true,
+        unique: true,
+        trim: true
     },
     nombre_grado:{
         type: String,
         required: true,
-        trim: true,
+        trim: true
     },
 },{timestamps:true});
 

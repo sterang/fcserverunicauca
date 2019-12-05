@@ -6,22 +6,23 @@ const areaSubjectSchema = new Schema({
     id_areaMateria:{
         type: Number,
         required: true,
-        trim: true,
+        unique: true,
+        trim: true
     },
     cont:{
         type: Number,
         required: true,
-        trim: true,
+        trim: true
     },
     id_colegio:{
         type: Number,
         required: true,
-        trim: true,
+        trim: true
     },
     nombre_areaMateria:{
         type: String,
         required: true,
-        trim: true,
+        trim: true
     },
 },{timestamps:true});
 

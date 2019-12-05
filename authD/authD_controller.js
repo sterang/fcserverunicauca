@@ -15,7 +15,7 @@ exports.createDocente = async (req, res, next)=>{
         contrasena: req.body.contrasena,
         correo_electronico: req.body.correo_electronico
     }
-    console.log(newDocente);
+    //console.log(newDocente);
     await Docente.create(newDocente,(err,teacher)=>{
         if (err) return res.status(500).send(`Server Error ${err}`);
         res.json({Estado: 'Docente Creado' })
@@ -23,12 +23,12 @@ exports.createDocente = async (req, res, next)=>{
 }
 
 exports.loginDocente = (req, res, next)=>{
-    console.log('Entra al Bucle');
+    //console.log('Entra al Bucle');
     const docenteData = {
         correo_electronico: req.body.correo_electronico,
         contrasena: req.body.contrasena
     }
-    console.log(docenteData);
+    //console.log(docenteData);
     Docente.findOne({correo_electronico: docenteData.correo_electronico}, (err, teacher)=>{
         if(err) return res.status(500).send(`Server Error`);
         if(!teacher){
@@ -125,7 +125,7 @@ exports.uploadDocente = async (req, res) => {
 }
 
 exports.deleteDocente = async (req, res) => {
-    console.log(req.body)
+    //console.log(req.body)
     const docenteData = {
         id_docente: req.body.id_docente
     }

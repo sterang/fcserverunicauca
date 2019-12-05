@@ -6,12 +6,13 @@ const typeSchema = new Schema({
     id_tipoContenido:{
         type: Number,
         required: true,
-        trim: true,
+        unique: true,
+        trim: true
     },
     nombre_tipoContenido:{
         type: String,
         required: true,
-        trim: true,
+        trim: true
     },
 },{timestamps:true});
 

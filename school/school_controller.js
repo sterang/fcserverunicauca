@@ -13,7 +13,7 @@ exports.createSchool = async (req, res, next)=>{
         rector: req.body.rector,
         colegioActivo: req.body.colegioActivo
     }
-    console.log(newSchool);
+    //console.log(newSchool);
     await School.create(newSchool,(err,school)=>{
         if(err) return res.status(500).send(`Server Error`);
         res.send({school});
@@ -67,7 +67,7 @@ exports.uploadSchool = async (req, res) => {
 }
 
 exports.deleteSchool = async (req, res) => {
-    console.log(req.body)
+    //console.log(req.body)
     const schoolData = {
         id_colegio: req.body.id_colegio
     }

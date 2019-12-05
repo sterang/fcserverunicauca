@@ -6,48 +6,50 @@ const docenteSchema = new Schema({
     id_docente:{
         type: Number,
         required: true,
-        trim: true,
+        unique: true,
+        trim: true
     },
     cont:{
         type: Number,
         required: true,
-        trim: true,
+        trim: true
     },
     tipo_usuario:{
         type: Number,
         required: true,
-        trim: true,
+        trim: true
     },
     nombre_docente:{
         type: String,
         required: true,
-        trim: true,
+        trim: true
     },
     apellido_docente:{
         type: String,
         required: true,
-        trim: true,
+        trim: true
     },
     id_colegio:{
         type: Number,
-        trim: true,
+        required: true,
+        trim: true
     },
     nombre_usuario:{
         type: String,
         required: true,
         trim: true,
-        unique: true,
+        unique: true
     },
     contrasena:{
         type: String,
         required: true,
-        trim: true,
+        trim: true
     },
     correo_electronico:{
         type: String,
         required: true,
         trim: true,
-        unique: true,
+        unique: true
     },
   //id_docente cont	tipo_usuario	nombre_docente	apellido_docente	
 //id_colegio	id_materia1	id_materia2	grado10_materia1	grado11_materia1

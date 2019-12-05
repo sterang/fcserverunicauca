@@ -19,7 +19,7 @@ exports.createAdmin = async (req, res, next)=>{
 }
 
 exports.loginAdmin = (req, res, next)=>{
-    console.log('Entra al Bucle');
+    //console.log('Entra al Bucle');
     const adminData = {
         nombre_usuario: req.body.nombre_usuario,
         contrasena: req.body.contrasena

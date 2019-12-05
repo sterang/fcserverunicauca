@@ -14,7 +14,7 @@ exports.createContentREA = async (req, res, next)=>{
         descripcion_CREA: req.body.descripcion_CREA,
         en_uso: 0
     }
-    console.log(newContentREA);
+    //console.log(newContentREA);
     await ContentREA.create(newContentREA,(err,content)=>{
         if(err) return res.status(500).send(`Server Error`);
         res.send({content});
