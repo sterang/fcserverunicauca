@@ -165,6 +165,17 @@ exports.uploadActivity = async (req, res) => {
     res.json({status: 'Actividad Actualizada'});
 }
 
+exports.uploadSectionsActivity = async (req, res) => {
+    const activityData={
+        id_actividad: req.body.id_actividad,
+    }
+    const activityNewData = {
+        taller: req.body.taller,
+        evaluacion: req.body.evaluacion
+    }
+    await Activities.updateOne({id_actividad: activityData.id_actividad}, {$set: activityNewData}, {new: true});
+    res.json({status: 'Actividad Actualizada'});
+}
 
 exports.deleteActivity = async (req, res) => {
     //console.log(req.body)
