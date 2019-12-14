@@ -81,11 +81,10 @@ exports.uploadInfoLoginAdmin = async (req, res) => {
         id_admin: req.body.id_admin
     }
     const adminNewData = {
-        nombre_usuario: req.body.nombre_usuario,
-        contrasena: req.body.contrasena,
+        contrasena: req.body.contrasena
     }
     await Admin.updateOne({id_admin: adminData.id_admin}, {$set: adminNewData}, {new: true});
-    res.json({status: 'Informacion de Login Actualizada'});
+    res.json({status: 'Contraseña Actualizada'});
 }
 
 exports.deleteAdmin = async (req, res) => {
