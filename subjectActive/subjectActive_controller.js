@@ -12,7 +12,7 @@ exports.createSubjectActive = async (req, res, next)=>{
     }
     //console.log(newSubjectActive);
     await SubjectActive.create(newSubjectActive,(err,subjectActive)=>{
-        if(err) return res.status(500).send(`Server Error`);
+        if(err) return res.json({Estado: "Error Crear Materia Activa"});
         res.json({Estado: 'Materia Activa Creada' })
     })
 }

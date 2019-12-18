@@ -26,9 +26,9 @@ exports.loginAdmin = (req, res, next)=>{
     }
     //console.log(adminData);
     Admin.findOne({nombre_usuario: adminData.nombre_usuario}, (err, admin)=>{
-        if(err) return res.status(500).send(`Server Error`);
+        if(err) return res.json({Estado: "Error Servidor"});
         if(!admin){
-            res.status(409).send({message:'Something Error'});
+            res.json({Estado: "Error Login"});
         }else{
             const resultContrasena = adminData.contrasena;
             if(resultContrasena == admin.contrasena){
@@ -45,7 +45,7 @@ exports.loginAdmin = (req, res, next)=>{
                 }
                 res.send({dataAdmin});
             }else{
-                res.status(409).send({message: 'Something Wrong'});
+                res.json({Estado: "Error Login"});
             }
         }
     })

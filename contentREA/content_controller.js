@@ -16,7 +16,7 @@ exports.createContentREA = async (req, res, next)=>{
     }
     //console.log(newContentREA);
     await ContentREA.create(newContentREA,(err,content)=>{
-        if(err) return res.status(500).send(`Server Error`);
+        if(err) return res.json({Estado: "Error Crear Contenido"});
         res.send({content});
     })
 }
@@ -93,6 +93,17 @@ exports.uploadEstadoContentREA = async (req,res) => {
     }
     await ContentREA.updateOne({id_CREA: contentData.id_CREA}, {$set: contentNewEstadoData}, {new: true});
     res.json({status: 'Estado Contenido Actualizado'});
+} 
+
+exports.uploadURLContentREA = async (req,res) => {
+    const contentData = {
+        id_CREA: req.body.id_CREA
+    }
+    const contentNewURLData = {
+        urlrepositorio: req.body.urlrepositorio
+    }
+    await ContentREA.updateOne({id_CREA: contentData.id_CREA}, {$set: contentNewURLData}, {new: true});
+    res.json({status: 'URL Contenido Actualizado'});
 } 
 
 //id_CREA	tipo_CREA	id_materia	grado10	
