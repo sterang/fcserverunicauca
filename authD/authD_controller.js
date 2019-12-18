@@ -92,8 +92,9 @@ exports.uploadInfoPersonalDocente = async (req, res) => {
         nombre_docente: req.body.nombre_docente,
         apellido_docente: req.body.apellido_docente
     }
-    await Docente.updateOne({id_docente: docenteData.id_docente}, {$set: docenteNewData}, {new: true});
-    res.json({status: 'Informacion Personal Actualizada'});
+    await Docente.updateOne({id_docente: docenteData.id_docente}, {$set: docenteNewData}, {new: true}, (err =>{
+        return res.json({status: 'Informacion Personal Actualizada'});
+    }));
 }
 
 exports.uploadInfoLoginDocente = async (req, res) => {
@@ -105,8 +106,9 @@ exports.uploadInfoLoginDocente = async (req, res) => {
         contrasena: req.body.contrasena,
         correo_electronico: req.body.correo_electronico
     }
-    await Docente.updateOne({id_docente: docenteData.id_docente}, {$set: docenteNewData}, {new: true});
-    res.json({status: 'Informacion de Login Actualizada'});
+    await Docente.updateOne({id_docente: docenteData.id_docente}, {$set: docenteNewData}, {new: true}, (err =>{
+        return res.json({status: 'Informacion de Login Actualizada'});
+    }));
 }
 
 exports.uploadDocente = async (req, res) => {
@@ -120,8 +122,9 @@ exports.uploadDocente = async (req, res) => {
         contrasena: req.body.contrasena,
         correo_electronico: req.body.correo_electronico
     }
-    await Docente.updateOne({id_docente: docenteData.id_docente}, {$set: docenteNewData}, {new: true});
-    res.json({status: 'Informacion Docente Actualizada'});
+    await Docente.updateOne({id_docente: docenteData.id_docente}, {$set: docenteNewData}, {new: true}, (err =>{
+        return res.json({status: 'Informacion Docente Actualizada'});
+    }));
 }
 
 exports.deleteDocente = async (req, res) => {
@@ -129,7 +132,8 @@ exports.deleteDocente = async (req, res) => {
     const docenteData = {
         id_docente: req.body.id_docente
     }
-    await Docente.deleteOne({id_docente: docenteData.id_docente});
-    res.json({Estado: 'Docente Eliminado' })
+    await Docente.deleteOne({id_docente: docenteData.id_docente}, (err =>{
+        return res.json({Estado: 'Docente Eliminado' });
+    }));
 }
 

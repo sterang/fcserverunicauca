@@ -11,7 +11,7 @@ exports.createSubject = async (req, res, next)=>{
     }
     //console.log(newSubject);
     await Subject.create(newSubject,(err,subject)=>{
-        if(err) return res.status(500).send(`Server Error`);
+        if(err) return res.json({Estado: "Error Crear Materia"});
         res.send({subject});
     })
 }
@@ -49,8 +49,9 @@ exports.deleteSubject = async (req, res) => {
     const subjectData = {
         id_materia: req.body.id_materia
     }
-    await Subject.deleteOne({id_materia: subjectData.id_materia});
-    res.json({Estado: 'Materia Eliminada' })
+    await Subject.deleteOne({id_materia: subjectData.id_materia}, (err =>{
+        return res.json({Estado: 'Materia Eliminada' });
+    }));
 }
 
 //id_materia  cont 	id_colegio

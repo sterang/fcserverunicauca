@@ -7,7 +7,7 @@ exports.createGrade = async (req, res, next)=>{
     }
     //console.log(newGrade);
     await Grade.create(newGrade,(err,grade)=>{
-        if(err) return res.status(500).send(`Server Error`);
+        if(err) return res.json({Estado: "Error Crear Grado"});
         res.send({grade});
     })
 }
@@ -45,8 +45,9 @@ exports.deleteGrade = async (req, res) => {
     const gradeData = {
         id_grado: req.body.id_grado
     }
-    await Grade.deleteOne({id_grado: gradeData.id_grado});
-    res.json({Estado: 'Grado Eliminada' })
+    await Grade.deleteOne({id_grado: gradeData.id_grado}, (err =>{
+        return res.json({Estado: 'Grado Eliminada' });
+    }));
 }
 
 //id_grado	
