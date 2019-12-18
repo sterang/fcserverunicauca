@@ -50,8 +50,9 @@ exports.deleteSubjectActive = async (req, res) => {
     const subjectActiveData = {
         id_materiaActiva: req.body.id_materiaActiva
     }
-    await SubjectActive.deleteOne({id_materiaActiva: subjectActiveData.id_materiaActiva});
-    res.json({Estado: 'Materia Activa Eliminada' })
+    await SubjectActive.deleteOne({id_materiaActiva: subjectActiveData.id_materiaActiva}, (err =>{
+        return res.json({Estado: 'Materia Activa Eliminada'});
+    }));
 }
 
 //id_materia	id_colegio

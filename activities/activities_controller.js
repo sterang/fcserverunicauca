@@ -161,8 +161,9 @@ exports.uploadActivity = async (req, res) => {
         EA34: req.body.EA34,
         ECA3: req.body.ECA3
     }
-    await Activities.updateOne({id_actividad: activityData.id_actividad}, {$set: activityNewData}, {new: true});
-    res.json({status: 'Actividad Actualizada'});
+    await Activities.updateOne({id_actividad: activityData.id_actividad}, {$set: activityNewData}, {new: true}, (err =>{
+        return res.json({status: 'Actividad Actualizada'});
+    }));
 }
 
 exports.uploadSectionsActivity = async (req, res) => {
@@ -173,8 +174,9 @@ exports.uploadSectionsActivity = async (req, res) => {
         taller: req.body.taller,
         evaluacion: req.body.evaluacion
     }
-    await Activities.updateOne({id_actividad: activityData.id_actividad}, {$set: activityNewData}, {new: true});
-    res.json({status: 'Actividad Actualizada'});
+    await Activities.updateOne({id_actividad: activityData.id_actividad}, {$set: activityNewData}, {new: true}, (err =>{
+        return res.json({status: 'Seccion de la Actividad Actualizada'});
+    }));
 }
 
 exports.deleteActivity = async (req, res) => {
@@ -182,8 +184,9 @@ exports.deleteActivity = async (req, res) => {
     const activityData = {
         id_actividad: req.body.id_actividad
     }
-    await Activities.deleteOne({id_actividad: activityData.id_actividad});
-    res.json({Estado: 'Actividad Eliminada' })
+    await Activities.deleteOne({id_actividad: activityData.id_actividad}, (err =>{
+        return res.json({Estado: 'Actividad Eliminada' });
+    }));
 }
 
 
