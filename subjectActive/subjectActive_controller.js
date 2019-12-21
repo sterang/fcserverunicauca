@@ -10,9 +10,9 @@ exports.createSubjectActive = async (req, res, next)=>{
         id_colegio: req.body.id_colegio,
         url_imagen: req.body.url_imagen
     }
-    console.log(newSubjectActive);
+    //console.log(newSubjectActive);
     await SubjectActive.create(newSubjectActive,(err,subjectActive)=>{
-        if(err) return res.status(500).send(`Server Error`);
+        if(err) return res.json({Estado: "Error Crear Materia Activa"});
         res.json({Estado: 'Materia Activa Creada' })
     })
 }
@@ -46,12 +46,13 @@ exports.newLoadSubjectActives = async (req, res) => {
 }
 
 exports.deleteSubjectActive = async (req, res) => {
-    console.log(req.body)
+    //console.log(req.body)
     const subjectActiveData = {
         id_materiaActiva: req.body.id_materiaActiva
     }
-    await SubjectActive.deleteOne({id_materiaActiva: subjectActiveData.id_materiaActiva});
-    res.json({Estado: 'Materia Activa Eliminada' })
+    await SubjectActive.deleteOne({id_materiaActiva: subjectActiveData.id_materiaActiva}, (err =>{
+        return res.json({Estado: 'Materia Activa Eliminada'});
+    }));
 }
 
 //id_materia	id_colegio

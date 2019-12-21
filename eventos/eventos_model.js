@@ -92,6 +92,10 @@ const eventoSchema = new Schema({
         type:Number,
         trim: true
     },
+    oculto:{
+        type:Number,
+        trim: true
+    },
 
 
 })

@@ -22,7 +22,8 @@ exports.createEventos=(req,res,next)=>{
         check_profile: req.body.check_profile,
         check_Ea1: req.body.check_Ea1,
         check_Ea2: req.body.check_Ea2,
-        check_Ea3: req.body.check_Ea3
+        check_Ea3: req.body.check_Ea3,
+        oculto: 0
     }
     //id_evento	data_start	hour_start	data_hours_end	hour_end
     //	id_actividad	id_estudiante	check_download	check_inicio	
@@ -48,8 +49,8 @@ exports.loadEvento = (req,res,next)=>{
         }
     })
 }
-exports.allEventos = (req,res,next)=>{
-    Eventos.find(function(err, eventStudents){
+exports.allEventos = async(req,res,next)=>{
+    const allEventos = await Eventos.find(function(err, eventStudents){
         if(err) return res.status(500).send('Server Error');
         if(!eventStudents){
             res.status(409).send({message:'Something Error'});
@@ -57,7 +58,77 @@ exports.allEventos = (req,res,next)=>{
             res.send(eventStudents);
         }
     })
+    
 }
+exports.allEventsForAngular=async(req,res,next)=>{
+    var mandaRes = 0;
+    const allEventos = await Eventos.find(function(err, eventStudents){
+        if(err) return res.status(500).send('Server Error');
+        if(!eventStudents){
+            res.status(409).send({message:'Something Error'});
+        } else{
+            //res.send(eventStudents);
+            mandaRes = 1;
+        }
+    })
+    if(mandaRes==1){
+        var storageAllInformation = [];
+    var storageAllInformationWithStudents = [];
+    var storageActividad = allEventos.reverse();
+    //console.log(storageActividad);
+    for (var i = 0; i< allEventos.length;i++){
+        resultadoEstudiantes = Array.from(new Set(storageActividad.map(s => s.id_estudiante )))
+            .map(id_estudiante => {
+              return {
+                id_estudiante:id_estudiante,
+            };
+        });
+    }
+    for (var i=0; i<resultadoEstudiantes.length;i++){
+        storageActividad.filter(function(element){
+            if(element.id_estudiante==resultadoEstudiantes[0].id_estudiante){
+                storageAllInformation.push(element)
+            }
+        });
+        resultadoEstudiantesRep = Array.from(new Set(storageAllInformation.map(s => s.id_actividad )))
+            .map(id_actividad => {
+              return {
+                id_actividad:id_actividad,
+                data_start: storageAllInformation.find(s => s.id_actividad === id_actividad).data_start,
+                hour_start: storageAllInformation.find(s => s.id_actividad === id_actividad).hour_start,
+                data_end: storageAllInformation.find(s => s.id_actividad === id_actividad).data_end,
+                hour_end: storageAllInformation.find(s=> s.id_actividad=== id_actividad).hour_end,
+                check_download: storageAllInformation.find(s => s.id_actividad === id_actividad).check_download,
+                id_estudiante: storageAllInformation.find(s => s.id_actividad === id_actividad).id_estudiante,
+                check_inicio: storageAllInformation.find(s => s.id_actividad === id_actividad).check_inicio,
+                check_fin: storageAllInformation.find(s => s.id_actividad === id_actividad).check_fin,
+                check_answer: storageAllInformation.find(s => s.id_actividad === id_actividad).check_answer,
+                count_video: storageAllInformation.find(s => s.id_actividad === id_actividad).count_video,
+                check_video: storageAllInformation.find(s => s.id_actividad === id_actividad).check_video,
+                check_document: storageAllInformation.find(s => s.id_actividad === id_actividad).check_document,
+                check_a1: storageAllInformation.find(s => s.id_actividad === id_actividad).check_a1,
+                check_a2: storageAllInformation.find(s => s.id_actividad === id_actividad).check_a2,
+                check_a3: storageAllInformation.find(s => s.id_actividad === id_actividad).check_a3,
+                check_profile: storageAllInformation.find(s => s.id_actividad === id_actividad).check_profile,
+                check_Ea1: storageAllInformation.find(s => s.id_actividad === id_actividad).check_Ea1,
+                check_Ea2: storageAllInformation.find(s => s.id_actividad === id_actividad).check_Ea2,
+                check_Ea3: storageAllInformation.find(s => s.id_actividad === id_actividad).check_Ea3,
+                id_evento: storageAllInformation.find(s => s.id_actividad === id_actividad).id_evento,
+            };
+        });
+        resultadoEstudiantesRep.filter(function(element){
+            storageAllInformationWithStudents.push(element);
+        });
+        
+    }
+    res.send(storageAllInformationWithStudents);
+    console.log(resultadoEstudiantes);
+
+    }
+    
+
+}
+
 exports.generateMetrics=(req,res,next)=>{
     const contentData={
         id_estudiante: req.body.id_estudiante,
@@ -72,8 +143,48 @@ exports.generateMetrics=(req,res,next)=>{
             res.send(dataEvents);
         }
     })
+}
 
+exports.uploadEvento = async (req, res) => {
+    const eventoData={
+        id_evento: req.body.id_evento
+    }
+    const eventoNewData = {
+        data_start: req.body.data_start,
+        hour_start: req.body.hour_start,
+        data_end: req.body.data_end,
+        hour_end: req.body.hour_end,
+        id_actividad: req.body.id_actividad,
+        id_estudiante: req.body.id_estudiante,
+        check_download: req.body.check_download,
+        check_inicio: req.body.check_inicio,
+        check_fin: req.body.check_fin,
+        check_answer: req.body.check_answer,
+        count_video: req.body.count_video,
+        check_video: req.body.check_video,
+        check_document: req.body.check_document,
+        check_a1: req.body.check_a1,
+        check_a2: req.body.check_a2,
+        check_a3: req.body.check_a3,
+        check_profile: req.body.check_profile,
+        check_Ea1: req.body.check_Ea1,
+        check_Ea2: req.body.check_Ea2,
+        check_Ea3: req.body.check_Ea3,
+        oculto: req.body.oculto
+    }
+    await Eventos.updateOne({id_evento: eventoData.id_evento}, {$set: eventoNewData}, {new: true});
+    res.json({status: 'Evento Actualizado'});
+}
 
+exports.uploadEstadoEvento = async (req, res) => {
+    const eventoData={
+        id_evento: req.body.id_evento
+    }
+    const eventoNewData = {
+        oculto: req.body.oculto
+    }
+    await Eventos.updateOne({id_evento: eventoData.id_evento}, {$set: eventoNewData}, {new: true});
+    res.json({status: 'Estado Evento Actualizado'});
 }
 //id_evento	fecha	id_actividad	id_estudiante	
 //check_download	check_inicio	check_fin	

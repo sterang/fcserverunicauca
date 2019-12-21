@@ -16,7 +16,7 @@ exports.createEstudiante = (req, res, next)=>{
         contrasena: req.body.contrasena,
         correo_electronico: req.body.correo_electronico
     }
-    console.log(newEstudiante);
+    //console.log(newEstudiante);
     Estudiante.create(newEstudiante,(err,student)=>{
         if (err) return res.status(500).send(`Server Error ${err}`);
         res.send({student})
@@ -24,12 +24,12 @@ exports.createEstudiante = (req, res, next)=>{
 }
 
 exports.loginEstudiante = (req, res, next)=>{
-    console.log('Entra al Bucle');
+    //console.log('Entra al Bucle');
     const estudianteData = {
         correo_electronico: req.body.correo_electronico,
         contrasena: req.body.contrasena
     }
-    console.log(estudianteData);
+    //console.log(estudianteData);
     Estudiante.findOne({correo_electronico: estudianteData.correo_electronico}, (err, student)=>{
         if(err) return res.status(500).send(`Server Error`);
         if(!student){
@@ -98,7 +98,7 @@ exports.uploadEstudiante = async (req, res) => {
 }
 
 exports.deleteEstudiante = async (req, res) => {
-    console.log(req.body)
+    //console.log(req.body)
     const estudianteData = {
         id_estudiante: req.body.id_estudiante
     }

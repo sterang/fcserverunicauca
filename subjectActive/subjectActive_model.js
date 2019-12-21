@@ -6,37 +6,38 @@ const subjectActiveSchema = new Schema({
     id_materiaActiva:{
         type: Number,
         required: true,
-        trim: true,
+        unique: true,
+        trim: true
     },
     nombre_materiaActiva:{
         type: String,
         required: true,
-        trim: true,
+        trim: true
     },
     id_materia:{
         type: Number,
         required: true,
-        trim: true,
+        trim: true
     },
     id_grado:{
         type: Number,
         required: true,
-        trim: true,
+        trim: true
     },
     id_docente:{
         type: Number,
         required: true,
-        trim: true,
+        trim: true
     },
     id_colegio:{
         type: Number,
         required: true,
-        trim: true,
+        trim: true
     },
     url_imagen:{
         type: String,
         required: true,
-        trim: true,
+        trim: true
     },
 },{timestamps:true});
 

@@ -10,9 +10,9 @@ exports.createCompetencia = async (req, res, next)=>{
         gradoInicial: req.body.gradoInicial,
         gradoFinal: req.body.gradoFinal		
     }
-    console.log(newCompetencia);
+    //console.log(newCompetencia);
     await Competencia.create(newCompetencia,(err,competencia)=>{
-        if(err) return res.status(500).send(`Server Error`);
+        if(err) return res.json({Estado: "Error Crear Competencia"});
         res.send({competencia});
     })
 }
@@ -46,12 +46,13 @@ exports.newLoadCompetencias = async (req, res) => {
 }
 
 exports.deleteCompetencia = async (req, res) => {
-    console.log(req.body)
+    //console.log(req.body)
     const competenciaData = {
         id_competencia: req.body.id_competencia
     }
-    await Competencia.deleteOne({id_competencia: competenciaData.id_competencia});
-    res.json({Estado: 'Competencia Eliminada' })
+    await Competencia.deleteOne({id_competencia: competenciaData.id_competencia}, (err =>{
+        return res.json({Estado: 'Competencia Eliminada'});
+    }));
 }
 
 //id_competencia id_materiaCompetencia gradoInicial gradoFinal	

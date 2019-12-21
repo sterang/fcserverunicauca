@@ -15,24 +15,24 @@ exports.createDocente = async (req, res, next)=>{
         contrasena: req.body.contrasena,
         correo_electronico: req.body.correo_electronico
     }
-    console.log(newDocente);
+    //console.log(newDocente);
     await Docente.create(newDocente,(err,teacher)=>{
-        if (err) return res.status(500).send(`Server Error ${err}`);
+        if (err) return res.json({Estado: "Error Crear Docente"});
         res.json({Estado: 'Docente Creado' })
     })
 }
 
 exports.loginDocente = (req, res, next)=>{
-    console.log('Entra al Bucle');
+    //console.log('Entra al Bucle');
     const docenteData = {
         correo_electronico: req.body.correo_electronico,
         contrasena: req.body.contrasena
     }
-    console.log(docenteData);
+    //console.log(docenteData);
     Docente.findOne({correo_electronico: docenteData.correo_electronico}, (err, teacher)=>{
-        if(err) return res.status(500).send(`Server Error`);
+        if(err) return res.json({Estado: "Error Servidor"});
         if(!teacher){
-            res.status(409).send({message:'Something Error'});
+            res.json({Estado: "Error Login"});
         }else{
             const resultContrasena= docenteData.contrasena;
             if(resultContrasena==teacher.contrasena){
@@ -53,7 +53,7 @@ exports.loginDocente = (req, res, next)=>{
                 }
                 res.send({dataDocente});
             }else{
-                res.status(409).send({message: 'Something Wrong'});
+                res.json({Estado: "Error Login"});
             }
         }
     })
@@ -92,8 +92,9 @@ exports.uploadInfoPersonalDocente = async (req, res) => {
         nombre_docente: req.body.nombre_docente,
         apellido_docente: req.body.apellido_docente
     }
-    await Docente.updateOne({id_docente: docenteData.id_docente}, {$set: docenteNewData}, {new: true});
-    res.json({status: 'Informacion Personal Actualizada'});
+    await Docente.updateOne({id_docente: docenteData.id_docente}, {$set: docenteNewData}, {new: true}, (err =>{
+        return res.json({status: 'Informacion Personal Actualizada'});
+    }));
 }
 
 exports.uploadInfoLoginDocente = async (req, res) => {
@@ -105,8 +106,9 @@ exports.uploadInfoLoginDocente = async (req, res) => {
         contrasena: req.body.contrasena,
         correo_electronico: req.body.correo_electronico
     }
-    await Docente.updateOne({id_docente: docenteData.id_docente}, {$set: docenteNewData}, {new: true});
-    res.json({status: 'Informacion de Login Actualizada'});
+    await Docente.updateOne({id_docente: docenteData.id_docente}, {$set: docenteNewData}, {new: true}, (err =>{
+        return res.json({status: 'Informacion de Login Actualizada'});
+    }));
 }
 
 exports.uploadDocente = async (req, res) => {
@@ -120,16 +122,18 @@ exports.uploadDocente = async (req, res) => {
         contrasena: req.body.contrasena,
         correo_electronico: req.body.correo_electronico
     }
-    await Docente.updateOne({id_docente: docenteData.id_docente}, {$set: docenteNewData}, {new: true});
-    res.json({status: 'Informacion Docente Actualizada'});
+    await Docente.updateOne({id_docente: docenteData.id_docente}, {$set: docenteNewData}, {new: true}, (err =>{
+        return res.json({status: 'Informacion Docente Actualizada'});
+    }));
 }
 
 exports.deleteDocente = async (req, res) => {
-    console.log(req.body)
+    //console.log(req.body)
     const docenteData = {
         id_docente: req.body.id_docente
     }
-    await Docente.deleteOne({id_docente: docenteData.id_docente});
-    res.json({Estado: 'Docente Eliminado' })
+    await Docente.deleteOne({id_docente: docenteData.id_docente}, (err =>{
+        return res.json({Estado: 'Docente Eliminado' });
+    }));
 }
 

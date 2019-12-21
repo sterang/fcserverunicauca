@@ -14,9 +14,9 @@ exports.createContentREA = async (req, res, next)=>{
         descripcion_CREA: req.body.descripcion_CREA,
         en_uso: 0
     }
-    console.log(newContentREA);
+    //console.log(newContentREA);
     await ContentREA.create(newContentREA,(err,content)=>{
-        if(err) return res.status(500).send(`Server Error`);
+        if(err) return res.json({Estado: "Error Crear Contenido"});
         res.send({content});
     })
 }
@@ -80,8 +80,9 @@ exports.deleteContentREA = async (req, res) => {
     const contentData = {
         id_CREA: req.body.id_CREA
     }
-    await ContentREA.deleteOne({id_CREA: contentData.id_CREA});
-    res.json({Estado: 'Contenido Eliminado' })
+    await ContentREA.deleteOne({id_CREA: contentData.id_CREA}, (err =>{
+        return res.json({Estado: 'Contenido Eliminado'});
+    }));
 }
 
 exports.uploadEstadoContentREA = async (req,res) => {
@@ -91,8 +92,21 @@ exports.uploadEstadoContentREA = async (req,res) => {
     const contentNewEstadoData = {
         en_uso: req.body.en_uso
     }
-    await ContentREA.updateOne({id_CREA: contentData.id_CREA}, {$set: contentNewEstadoData}, {new: true});
-    res.json({status: 'Estado Contenido Actualizado'});
+    await ContentREA.updateOne({id_CREA: contentData.id_CREA}, {$set: contentNewEstadoData}, {new: true}, (err =>{
+        return res.json({status: 'Estado Contenido Actualizado'});
+    }));
+} 
+
+exports.uploadURLContentREA = async (req,res) => {
+    const contentData = {
+        id_CREA: req.body.id_CREA
+    }
+    const contentNewURLData = {
+        urlrepositorio: req.body.urlrepositorio
+    }
+    await ContentREA.updateOne({id_CREA: contentData.id_CREA}, {$set: contentNewURLData}, {new: true}, (err =>{
+        return res.json({status: 'URL Contenido Actualizado'});
+    }));
 } 
 
 //id_CREA	tipo_CREA	id_materia	grado10	

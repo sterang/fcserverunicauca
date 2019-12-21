@@ -7,9 +7,9 @@ exports.createAreaSubject = async (req, res, next)=>{
         id_colegio: req.body.id_colegio,
         nombre_areaMateria: req.body.nombre_areaMateria
     }
-    console.log(newAreaSubject);
+    //console.log(newAreaSubject);
     await AreaSubject.create(newAreaSubject,(err,areaSubject)=>{
-        if(err) return res.status(500).send(`Server Error`);
+        if(err) return res.json({Estado: "Error Crear Area"});
         res.send({areaSubject});
     })
 }
@@ -43,10 +43,11 @@ exports.newLoadAreaSubjects = async (req, res) => {
 }
 
 exports.deleteAreaSubject = async (req, res) => {
-    console.log(req.body)
+    //console.log(req.body)
     const areaSubjectData = {
         id_areaMateria: req.body.id_areaMateria
     }
-    await AreaSubject.deleteOne({id_areaMateria: areaSubjectData.id_areaMateria});
-    res.json({Estado: 'Area de Materia Eliminada' })
+    await AreaSubject.deleteOne({id_areaMateria: areaSubjectData.id_areaMateria}, (err =>{
+        return res.json({Estado: 'Area de Materia Eliminada'});
+    }));
 }

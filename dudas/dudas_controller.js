@@ -77,7 +77,7 @@ exports.uploadEstadoDuda = async (req, res) => {
 }
 
 exports.deleteDuda = async (req, res) => {
-    console.log(req.body)
+    //console.log(req.body)
     const dudaData = {
         id_duda: req.body.id_duda
     }

@@ -6,52 +6,53 @@ const schoolSchema = new Schema({
     id_colegio:{
         type: Number,
         required: true,
-        trim: true,
+        unique: true,
+        trim: true
     },
     NIT:{
         type: Number,
         required: true,
-        trim: true,
+        trim: true
     },
     nombre_colegio:{
         type: String,
         required: true,
-        trim: true,
+        trim: true
     },
     ciudad:{
         type: String,
         required: true,
-        trim: true,
+        trim: true
     },
     direccion:{
         type: String,
         required: true,
-        trim: true,
+        trim: true
     },
     telefono:{
         type: Number,
         required: true,
-        trim: true,
+        trim: true
     },
     tipo_colegio:{
         type: String,
         required: true,
-        trim: true,
+        trim: true
     },
     calendario:{
         type: String,
         required: true,
-        trim: true,
+        trim: true
     },
     rector:{
         type: String,
         required: true,
-        trim: true,
+        trim: true
     },
     colegioActivo:{
         type: Number,
         required: true,
-        trim: true,
+        trim: true
     },
 },{timestamps:true});
 

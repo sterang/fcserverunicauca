@@ -6,57 +6,58 @@ const contentSchema = new Schema({
     id_CREA:{
         type: Number,
         required: true,
-        trim: true,
+        unique: true,
+        trim: true
     },
     cont:{
         type: Number,
         required: true,
-        trim: true,
+        trim: true
     },
     tipo_CREA:{
         type: Number,
         required: true,
-        trim: true,
+        trim: true
     },
     id_docente:{
         type: Number,
         required: true,
-        trim: true,
+        trim: true
     },
     id_materia:{
         type: Number,
         required: true,
-        trim: true,
+        trim: true
     },
     id_grado:{
         type: Number,
         required: true,
-        trim: true,
+        trim: true
     },
     id_colegio:{
         type: Number,
         required: true,
-        trim: true,
+        trim: true
     },
     nombre_CREA:{
         type: String,
         required: true,
-        trim: true,
+        trim: true
     },
     urlrepositorio:{
         type: String,
         required: true,
-        trim: true,
+        trim: true
     },
     descripcion_CREA:{
         type: String,
         required: true,
-        trim: true,
+        trim: true
     },
     en_uso:{
         type: Number,
         required: true,
-        trim: true,
+        trim: true
     },
 },{timestamps:true});
 

@@ -6,37 +6,38 @@ const competenciaSchema = new Schema({
     id_competencia:{
         type: Number,
         required: true,
-        trim: true,
+        unique: true,
+        trim: true
     },
     cont:{
         type: Number,
         required: true,
-        trim: true,
+        trim: true
     },
     id_colegio:{
         type: Number,
         required: true,
-        trim: true,
+        trim: true
     },
     nombre_competencia:{
         type: String,
         required: true,
-        trim: true,
+        trim: true
     },
     id_areaMateria:{
         type: Number,
         required: true,
-        trim: true,
+        trim: true
     },
     gradoInicial:{
         type: Number,
         required: true,
-        trim: true,
+        trim: true
     },
     gradoFinal:{
         type: Number,
         required: true,
-        trim: true,
+        trim: true
     },
 },{timestamps:true});
 

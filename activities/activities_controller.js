@@ -61,11 +61,13 @@ exports.createActivity = (req,res,next)=>{
         EA32: req.body.EA32,
         EA33: req.body.EA33,
         EA34: req.body.EA34,
-        ECA3: req.body.ECA3
+        ECA3: req.body.ECA3,
+        autor: req.body.autor,
+        id_autor: req.body.id_autor
     }
-    console.log(newActivities);
+    //console.log(newActivities);
     Activities.create(newActivities,(err,activity)=>{
-        if (err) return res.status(500).send(err);
+        if (err) return res.json({Estado: "Error Crear Actividad"});
         res.send({activity});
     })
 }
@@ -74,7 +76,7 @@ exports.loadActivity = (req, res, next)=>{
     const activityData={
         id_actividad: req.body.id_actividad,
     }
-    console.log(activityData);
+    //console.log(activityData);
     Activities.findOne({id_actividad: activityData.id_actividad}, (err, activity)=>{
         if(err) return res.status(500).send('Server Error');
         if(!activity){
@@ -159,18 +161,32 @@ exports.uploadActivity = async (req, res) => {
         EA34: req.body.EA34,
         ECA3: req.body.ECA3
     }
-    await Activities.updateOne({id_actividad: activityData.id_actividad}, {$set: activityNewData}, {new: true});
-    res.json({status: 'Actividad Actualizada'});
+    await Activities.updateOne({id_actividad: activityData.id_actividad}, {$set: activityNewData}, {new: true}, (err =>{
+        return res.json({status: 'Actividad Actualizada'});
+    }));
 }
 
+exports.uploadSectionsActivity = async (req, res) => {
+    const activityData={
+        id_actividad: req.body.id_actividad,
+    }
+    const activityNewData = {
+        taller: req.body.taller,
+        evaluacion: req.body.evaluacion
+    }
+    await Activities.updateOne({id_actividad: activityData.id_actividad}, {$set: activityNewData}, {new: true}, (err =>{
+        return res.json({status: 'Seccion de la Actividad Actualizada'});
+    }));
+}
 
 exports.deleteActivity = async (req, res) => {
-    console.log(req.body)
+    //console.log(req.body)
     const activityData = {
         id_actividad: req.body.id_actividad
     }
-    await Activities.deleteOne({id_actividad: activityData.id_actividad});
-    res.json({Estado: 'Actividad Eliminada' })
+    await Activities.deleteOne({id_actividad: activityData.id_actividad}, (err =>{
+        return res.json({Estado: 'Actividad Eliminada' });
+    }));
 }
 
 

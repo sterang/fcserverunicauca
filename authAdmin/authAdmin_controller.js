@@ -19,16 +19,16 @@ exports.createAdmin = async (req, res, next)=>{
 }
 
 exports.loginAdmin = (req, res, next)=>{
-    console.log('Entra al Bucle');
+    //console.log('Entra al Bucle');
     const adminData = {
         nombre_usuario: req.body.nombre_usuario,
         contrasena: req.body.contrasena
     }
     //console.log(adminData);
     Admin.findOne({nombre_usuario: adminData.nombre_usuario}, (err, admin)=>{
-        if(err) return res.status(500).send(`Server Error`);
+        if(err) return res.json({Estado: "Error Servidor"});
         if(!admin){
-            res.status(409).send({message:'Something Error'});
+            res.json({Estado: "Error Login"});
         }else{
             const resultContrasena = adminData.contrasena;
             if(resultContrasena == admin.contrasena){
@@ -45,7 +45,7 @@ exports.loginAdmin = (req, res, next)=>{
                 }
                 res.send({dataAdmin});
             }else{
-                res.status(409).send({message: 'Something Wrong'});
+                res.json({Estado: "Error Login"});
             }
         }
     })
@@ -115,11 +115,11 @@ exports.uploadInfoLoginAdmin = async (req, res) => {
         id_admin: req.body.id_admin
     }
     const adminNewData = {
-        nombre_usuario: req.body.nombre_usuario,
-        contrasena: req.body.contrasena,
+        contrasena: req.body.contrasena
     }
-    await Admin.updateOne({id_admin: adminData.id_admin}, {$set: adminNewData}, {new: true});
-    res.json({status: 'Informacion de Login Actualizada'});
+    await Admin.updateOne({id_admin: adminData.id_admin}, {$set: adminNewData}, {new: true}, (err =>{
+        return res.json({status: 'Contraseña Actualizada'});
+    }));
 }
 
 exports.deleteAdmin = async (req, res) => {

@@ -6,30 +6,31 @@ const dudaSchema = new Schema({
     id_duda:{
         type: Number,
         required: true,
-        trim: true,
+        unique: true,
+        trim: true
     },
     id_actividad:{
         type: Number,
         required: true,
-        trim: true,
+        trim: true
     },
     id_estudiante:{
         type: Number,
         required: true,
-        trim: true,
+        trim: true
     },
     pregunta:{
         type: String,
         required: true,
-        trim: true,
+        trim: true
     },
     respuesta:{
         type: String,
-        trim: true,
+        trim: true
     },
     estado_duda:{
         type: Number,
-        trim: true,
+        trim: true
     }
 },{timestamps:true});
 

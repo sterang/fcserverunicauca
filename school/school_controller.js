@@ -13,9 +13,9 @@ exports.createSchool = async (req, res, next)=>{
         rector: req.body.rector,
         colegioActivo: req.body.colegioActivo
     }
-    console.log(newSchool);
+    //console.log(newSchool);
     await School.create(newSchool,(err,school)=>{
-        if(err) return res.status(500).send(`Server Error`);
+        if(err) return res.json({Estado: "Error Crear Colegio"});
         res.send({school});
     })
 }
@@ -62,12 +62,13 @@ exports.uploadSchool = async (req, res) => {
         calendario: req.body.calendario,
         rector: req.body.rector,
     }
-    await School.updateOne({id_colegio: schoolData.id_colegio}, {$set: schoolNewData}, {new: true});
-    res.json({status: 'Informacion Colegio Actualizado'});
+    await School.updateOne({id_colegio: schoolData.id_colegio}, {$set: schoolNewData}, {new: true}, (err =>{
+        return res.json({status: 'Informacion Colegio Actualizado'});
+    }));
 }
 
 exports.deleteSchool = async (req, res) => {
-    console.log(req.body)
+    //console.log(req.body)
     const schoolData = {
         id_colegio: req.body.id_colegio
     }
