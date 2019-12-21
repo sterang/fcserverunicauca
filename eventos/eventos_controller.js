@@ -84,9 +84,11 @@ exports.allEventsForAngular=async(req,res,next)=>{
             };
         });
     }
+    console.log(resultadoEstudiantes.length);
     for (var i=0; i<resultadoEstudiantes.length;i++){
+        elementos = i;
         storageActividad.filter(function(element){
-            if(element.id_estudiante==resultadoEstudiantes[0].id_estudiante){
+            if(element.id_estudiante==resultadoEstudiantes[elementos].id_estudiante){
                 storageAllInformation.push(element)
             }
         });
@@ -116,6 +118,7 @@ exports.allEventsForAngular=async(req,res,next)=>{
                 id_evento: storageAllInformation.find(s => s.id_actividad === id_actividad).id_evento,
             };
         });
+        storageAllInformation = [];
         resultadoEstudiantesRep.filter(function(element){
             storageAllInformationWithStudents.push(element);
         });
