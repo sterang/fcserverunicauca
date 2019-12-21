@@ -65,7 +65,7 @@ exports.createActivity = (req,res,next)=>{
     }
     console.log(newActivities);
     Activities.create(newActivities,(err,activity)=>{
-        if (err) return res.status(500).send('Server Error Create');
+        if (err) return res.status(500).send(err);
         res.send({activity});
     })
 }

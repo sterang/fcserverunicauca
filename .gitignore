@@ -3,7 +3,9 @@ public
 # Logs
 logs
 *.log
-
+#SH
+function.sh
+prueba.sh
 
 
 # Runtime data

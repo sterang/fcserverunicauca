@@ -29,7 +29,19 @@ exports.loadDuda= (req,res,next)=>{
         }
     })
 }
-
+exports.loadDudaStudent= (req,res,next)=>{
+    const dudaData={
+        id_estudiante: req.body.id_estudiante
+    }
+    Duda.find({id_estudiante: dudaData.id_estudiante},(err, duda)=>{
+        if(err) return res.status(500).send('Server Error');
+        if(!duda){
+            res.status(409).send({message:`Something Error ${err}`});
+        }else{
+            res.send(duda);
+        }
+    })
+}
 exports.allDudas = (req,res,next)=>{
     Duda.find(function(err, dudas){
         if(err) return res.status(500).send('Server Error');

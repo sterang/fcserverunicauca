@@ -7,6 +7,7 @@ const estudianteSchema = new Schema({
         type: Number,
         required: true,
         trim: true,
+        unique: true
     },
     tipo_usuario:{
         type: Number,

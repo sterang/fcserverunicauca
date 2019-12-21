@@ -1,10 +1,8 @@
 #! /bin/bash
 
-echo "Sincronizando Datos"
+echo "Sincronizando Archivos"
 echo "Instalando dependencias"
 sudo apt install sshpass
 echo "Sincronizacion de datos con el servidor"
-sshpass -p '822FCUnicauca' rsync -avzh public/ fcunicauca@13.82.209.77:FCUnicauca/server/fcserverunicauca/public
-
-
+sshpass -p '822FCUnicauca' rsync -avzh public/ fcunicauca@40.122.146.97:FCUni/fcserverunicauca/public
 

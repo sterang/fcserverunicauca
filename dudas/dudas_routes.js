@@ -4,6 +4,7 @@ module.exports=(router)=> {
     router.post('/loadDuda', Duda.loadDuda);
     router.get('/loadAllDudas', Duda.allDudas);
     router.post('/uploadRespuestaDuda', Duda.uploadRespuestaDuda);
+    router.post('/loadDudaStudents', Duda.loadDudaStudent);
     router.post('/uploadEstadoDuda', Duda.uploadEstadoDuda);
     router.post('/deleteDuda', Duda.deleteDuda);
 }

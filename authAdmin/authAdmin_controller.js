@@ -51,6 +51,40 @@ exports.loginAdmin = (req, res, next)=>{
     })
 }
 
+exports.loginAdminMovil = (req, res, next)=>{
+    console.log('Entra al Bucle');
+    const adminData = {
+        nombre_usuario: req.body.nombre_usuario,
+        contrasena: req.body.contrasena
+    }
+    //console.log(adminData);
+    Admin.findOne({nombre_usuario: adminData.nombre_usuario}, (err, admin)=>{
+        if(err) return res.status(500).send(`Server Error`);
+        if(!admin){
+            res.status(409).send({message:'Something Error'});
+        }else{
+            const resultContrasena = adminData.contrasena;
+            if(resultContrasena == admin.contrasena){
+                const expiresInA = 24 * 60 * 60;
+                const accessToken = jwt.sign({ id_admin: adminData.id_admin }, SECRET_KEY, { expiresIn: expiresInA });
+                const dataAdmin = {
+                    id_admin: admin.id_admin,
+                    tipo_usuario: admin.tipo_usuario,
+                    id_colegio: admin.id_colegio,
+                    nombre_usuario: admin.nombre_usuario,
+                    contrasena: admin.contrasena,
+                    accessToken: accessToken,
+                    expiresIn: expiresInA
+                }
+                res.send([dataAdmin]);
+            }else{
+                res.status(409).send({message: 'Something Wrong'});
+            }
+        }
+    })
+}
+
+
 exports.loadAdmin = (req,res,next)=>{
     const adminData = {
         id_admin: req.body.id_admin
