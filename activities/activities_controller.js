@@ -97,6 +97,37 @@ exports.allActivities = (req,res,next)=>{
     })
 }
 
+exports.allActivitiesMovil = async(req,res,next)=>{
+    const studentData = {
+        id_grado: req.body.id_grado,
+        id_colegio: req.body.id_colegio
+    }
+    const data = await Activities.find(function(err, activities){
+        if(err) return res.status(500).send('Server Error');
+        if(!activities){
+            res.status(409).send({message:'Something Error'});
+        } else{
+            //res.send(activities);
+        }
+    })
+    console.log(data.length);
+        arrayColegio = [];
+        arrayFilterFinal= [];
+        arrayFilterMateria=[];
+        for (var i=0; i< data.length; i++) {
+            if (data[i].id_colegio == studentData.id_colegio){
+                arrayColegio.push(data[i]);
+            }
+        }
+        console.log(arrayColegio[0].id_grado);
+        for (var j=0; j<arrayColegio.length;j++){
+            if (arrayColegio[j].id_grado == studentData.id_grado){
+                arrayFilterFinal.push(arrayColegio[j]);
+            }
+        }
+        res.send(arrayFilterFinal);
+}
+
 exports.uploadActivity = async (req, res) => {
     const activityData={
         id_actividad: req.body.id_actividad,

@@ -40,6 +40,41 @@ exports.allSubjectActives = (req,res,next)=>{
     })
 }
 
+exports.allSubjectActivesMovil = async(req,res,next)=>{
+    const studentData = {
+        id_grado: req.body.id_grado,
+        id_colegio: req.body.id_colegio
+    }
+    var activadoSend = 0;
+    const data = await SubjectActive.find(function(err, subjectActives){
+        if(err) return res.status(500).send('Server Error');
+        if(!subjectActives){
+            res.status(409).send({message:'Something Error'});
+        } else{
+            activadoSend = 1;
+            //res.send(subjectActives);
+        }
+    })
+    if(activadoSend==1){
+        console.log(data.length);
+        arrayColegio = [];
+        arrayFilterFinal= [];
+        for (var i=0; i< data.length; i++) {
+            if (data[i].id_colegio == studentData.id_colegio){
+                arrayColegio.push(data[i]);
+            }
+        }
+        console.log(arrayColegio[0].id_grado);
+        for (var j=0; j<arrayColegio.length;j++){
+            if (arrayColegio[j].id_grado == studentData.id_grado){
+                arrayFilterFinal.push(arrayColegio[j]);
+            }
+        }
+        res.send(arrayFilterFinal);
+    }
+    
+}
+
 exports.newLoadSubjectActives = async (req, res) => {
     const subjectActivesData = await SubjectActive.find();
     res.json(subjectActivesData);
