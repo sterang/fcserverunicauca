@@ -64,7 +64,7 @@ exports.allSubjectActivesMovil = async(req,res,next)=>{
                 arrayColegio.push(data[i]);
             }
         }
-        console.log(arrayColegio[0].id_grado);
+        //console.log(arrayColegio[0].id_grado);
         for (var j=0; j<arrayColegio.length;j++){
             if (arrayColegio[j].id_grado == studentData.id_grado){
                 arrayFilterFinal.push(arrayColegio[j]);
@@ -90,6 +90,3 @@ exports.deleteSubjectActive = async (req, res) => {
     }));
 }
 
-//id_materia	id_colegio
-
-//nombre_materia	url_imagen	

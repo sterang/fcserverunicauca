@@ -10,6 +10,12 @@ const eventoSchema = new Schema({
         trim: true,
         unique: true
     },
+    count:{
+        type: Number,
+        required: true,
+        trim: true,
+        unique: true
+    },
     data_start:{
         type: String,
         trim: true

@@ -1,8 +1,27 @@
 const Eventos = require('./eventos_dao');
-
-exports.createEventos=(req,res,next)=>{
+var async  = require('express-async-await')
+var fetch = require('node-fetch')
+async function  obtenerLast () {
+    const last = await fetch('http://0.0.0.0:3000/loadAllEvento');
+    const data = await last.json();
+    console.log("Comprobando cuantos item tiene")
+    console.log(data.length);
+    return data.length;
+}
+exports.createEventos= async(req,res,next)=>  {
+    var last = await obtenerLast();
+    console.log(last);
+    var id_evento =req.body.id_evento; 
+    console.log("ID Eventos");
+    console.log(id_evento);
+    last = last+1;
+    var idCompleta = id_evento+''+last;
+    var idConvertida = parseInt(idCompleta);
+    console.log("ID Convertida");
+    console.log(idConvertida);
     const newEvento = {
-        id_evento: req.body.id_evento,
+        id_evento: idConvertida,
+        count: last,
         data_start: req.body.data_start,
         hour_start: req.body.hour_start,
         data_end: req.body.data_end,
@@ -128,8 +147,6 @@ exports.allEventsForAngular=async(req,res,next)=>{
     console.log(resultadoEstudiantes);
 
     }
-    
-
 }
 
 exports.generateMetrics=(req,res,next)=>{
