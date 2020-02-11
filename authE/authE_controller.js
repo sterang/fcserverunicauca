@@ -105,6 +105,12 @@ exports.deleteEstudiante = async (req, res) => {
     await Estudiante.deleteOne({id_estudiante: estudianteData.id_estudiante});
     res.json({Estado: 'Estudiante Eliminado' })
 }
+exports.conectionWithApp = async (req, res) => {
+    //console.log(req.body)
+    
+    res.json(1);
+}
+
 
 //id_estudiante	tipo_usuario	nombre_estudiante	
 //apellido_estudiante	grado_estudiante	
