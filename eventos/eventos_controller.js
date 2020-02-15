@@ -21,7 +21,7 @@ exports.createEventos= async(req,res,next)=>  {
     var idCompleta = id_evento+''+last+'';
     console.log("Imprimiendo IdCompleta");
     console.log(idCompleta);
-    var idConvertida = parseFloat(idCompleta,10);
+    var idConvertida = parseInt(idCompleta,10);
     console.log("ID Convertida");
     console.log(idConvertida);
     const newEvento = {
