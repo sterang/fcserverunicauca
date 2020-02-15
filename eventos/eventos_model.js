@@ -1,14 +1,17 @@
 const mongoose = require('mongoose');
+require('mongoose-long')(mongoose);
 const Schema = mongoose.Schema;
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
-
+//Carga Los Tipos de Schemas
+//var SchemasTypes = mongoose.Schema.Types;
 const eventoSchema = new Schema({
     id_evento:{
-        type: Number,
+        type: mongoose.Schema.Types.Long,
         required: true,
         trim: true,
-        unique: true
+        unique: true,
+        bsonType:"long"
     },
     count:{
         type: Number,
