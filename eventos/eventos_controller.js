@@ -10,13 +10,18 @@ async function  obtenerLast () {
 }
 exports.createEventos= async(req,res,next)=>  {
     var last = await obtenerLast();
+    console.log("El ultimo allado")
     console.log(last);
     var id_evento =req.body.id_evento; 
     console.log("ID Eventos");
     console.log(id_evento);
     last = last+1;
-    var idCompleta = id_evento+''+last;
-    var idConvertida = parseInt(idCompleta);
+    console.log("Trayendo Last +1")
+    console.log(last);
+    var idCompleta = id_evento+''+last+'';
+    console.log("Imprimiendo IdCompleta");
+    console.log(idCompleta);
+    var idConvertida = parseFloat(idCompleta,10);
     console.log("ID Convertida");
     console.log(idConvertida);
     const newEvento = {
@@ -91,7 +96,7 @@ exports.allEventsForAngular=async(req,res,next)=>{
         }
     })
     if(mandaRes==1){
-        var storageAllInformation = [];
+    var storageAllInformation = [];
     var storageAllInformationWithStudents = [];
     var storageActividad = allEventos.reverse();
     //console.log(storageActividad);

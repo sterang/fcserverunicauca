@@ -45,6 +45,29 @@ exports.allContent = (req,res,next)=>{
         }
     })
 }
+exports.allContentMovilG = async (req,res,next)=>{
+    console.log("Entra Aqui");
+    var mandaR=0;
+    const datosContent = await ContentREA.find(function(err, contents){
+        if(err) return res.status(500).send('Server Error');
+        if(!contents){
+            res.status(409).send({message:'Something Error'});
+        } else{
+            mandaR =1;
+        }
+    })
+    
+    var storageAllInformation = [];
+    var filtroDatos = datosContent;
+    //console.log();
+    for (var i = 0; i<datosContent.length;i++){
+        if(filtroDatos[i].tipo_CREA==1){
+            storageAllInformation.push(filtroDatos[i]);
+        }
+    }
+    res.send(storageAllInformation);
+}
+
 exports.SearchContentREA= (req,res,next)=>{
     const contentData={
         nombre_CREA: req.body.nombre_CREA,
