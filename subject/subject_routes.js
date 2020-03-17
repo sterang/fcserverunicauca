@@ -1,4 +1,6 @@
 const Subject = require('./subject_controller');
+/** @function RoutesSubject */
+// Routes for Subject
 module.exports=(router)=> {
     router.post('/createSubject', Subject.createSubject);
     router.post('/loadSubject', Subject.loadSubject);

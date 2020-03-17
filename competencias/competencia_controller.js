@@ -1,4 +1,6 @@
 const Competencia = require('./competencia_dao');
+/** @function createCompentencia */
+// Create the specific elements for competencia in mongo. 
 
 exports.createCompetencia = async (req, res, next)=>{
     const newCompetencia = {
@@ -16,6 +18,9 @@ exports.createCompetencia = async (req, res, next)=>{
         res.send({competencia});
     })
 }
+/** @function loadCompetencia */
+// Load the specific elements for competencia in mongo. 
+
 exports.loadCompetencia = (req,res,next)=>{
     const competenciaData={
         id_competencia: req.body.id_competencia
@@ -29,6 +34,9 @@ exports.loadCompetencia = (req,res,next)=>{
         }
     })
 }
+/** @function allCompetencia */
+// Load all the specific elements for competencia in mongo. 
+
 exports.allCompetencias = (req,res,next)=>{
     Competencia.find(function(err, competencia){
         if(err) return res.status(500).send('Server Error');
@@ -39,11 +47,15 @@ exports.allCompetencias = (req,res,next)=>{
         }
     })
 }
+/** @function newloadCompetencias */
+// Load New the specific elements for competencia in mongo. 
 
 exports.newLoadCompetencias = async (req, res) => {
     const competenciaData = await Competencia.find();
     res.json(competenciaData);
 }
+/** @function deleteCompetencia */
+// Delete the specific elements for competencia in mongo. 
 
 exports.deleteCompetencia = async (req, res) => {
     //console.log(req.body)

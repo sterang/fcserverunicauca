@@ -1,4 +1,6 @@
 const Grade = require('./grade_controller');
+/** @function RoutesGrades */
+// Routes for Grades
 module.exports=(router)=> {
     router.post('/createGrade', Grade.createGrade);
     router.post('/loadGrade', Grade.loadGrade);

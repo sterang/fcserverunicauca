@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
+/** @function competenciaSchema */
+// Schema in competencia for model
+
 const competenciaSchema = new Schema({
     id_competencia:{
         type: Number,

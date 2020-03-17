@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 mongoose.set('useCreateIndex',true);
 mongoose.set('useUnifiedTopology',true);
+/** @function adminSchema */
+// Model for Schema statics in database
 const adminSchema = new Schema({
     id_admin:{
         type: Number,

@@ -1,4 +1,6 @@
 const Subject = require('./subject_dao');
+/** @function createSubject */
+// Create the specific elements for Subject in mongo. 
 
 exports.createSubject = async (req, res, next)=>{
     const newSubject = {
@@ -15,6 +17,9 @@ exports.createSubject = async (req, res, next)=>{
         res.send({subject});
     })
 }
+/** @function loadSubject */
+// Load the specific elements for Subject in mongo. 
+
 exports.loadSubject = (req,res,next)=>{
     const subjectData = {
         id_materia: req.body.id_materia
@@ -28,6 +33,9 @@ exports.loadSubject = (req,res,next)=>{
         }
     })
 }
+/** @function allSubjects */
+// Load all the specific elements for Subject in mongo. 
+
 exports.allSubjects = (req,res,next)=>{
     Subject.find(function(err, subjects){
         if(err) return res.status(500).send('Server Error');
@@ -38,11 +46,15 @@ exports.allSubjects = (req,res,next)=>{
         }
     })
 }
+/** @function newLoadSubjects */
+// Load the specific elements for Subject in mongo. 
 
 exports.newLoadSubjects = async (req, res) => {
     const subjectsData = await Subject.find();
     res.json(subjectsData);
 }
+/** @function deleteSubject */
+// Delete the specific elements for Subject in mongo. 
 
 exports.deleteSubject = async (req, res) => {
     //console.log(req.body)

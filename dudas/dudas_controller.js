@@ -1,5 +1,6 @@
 const Duda = require('./dudas_dao');
-
+/** @function createDuda */
+// Create the specific elements for Duda in mongo. 
 exports.createDuda = async (req, res, next)=>{
     const newDuda = {
         id_duda: req.body.id_duda,
@@ -15,7 +16,8 @@ exports.createDuda = async (req, res, next)=>{
         res.send({duda});
     })
 }
-
+/** @function loadDuda */
+// Load the specific elements for Duda in mongo. 
 exports.loadDuda= (req,res,next)=>{
     const dudaData={
         id_duda: req.body.id_duda
@@ -29,6 +31,8 @@ exports.loadDuda= (req,res,next)=>{
         }
     })
 }
+/** @function loadDudaStudent */
+// Load the specific elements for Duda in mongo. 
 exports.loadDudaStudent= (req,res,next)=>{
     const dudaData={
         id_estudiante: req.body.id_estudiante
@@ -42,6 +46,9 @@ exports.loadDudaStudent= (req,res,next)=>{
         }
     })
 }
+/** @function allDudas */
+// Load all the specific elements for Duda in mongo. 
+
 exports.allDudas = (req,res,next)=>{
     Duda.find(function(err, dudas){
         if(err) return res.status(500).send('Server Error');
@@ -52,6 +59,8 @@ exports.allDudas = (req,res,next)=>{
         }
     })
 }
+/** @function uploadRespuestaDuda */
+// Upload the specific elements for Duda in mongo. 
 
 exports.uploadRespuestaDuda = async (req, res) => {
     const dudaData = {
@@ -64,6 +73,8 @@ exports.uploadRespuestaDuda = async (req, res) => {
     await Duda.updateOne({id_duda: dudaData.id_duda}, {$set: dudaNewData});
     res.json({status: 'Informacion Duda Actualizado'});
 }
+/** @function uploadEstadoDuda */
+// Upload the specific elements for Duda in mongo. 
 
 exports.uploadEstadoDuda = async (req, res) => {
     const dudaData = {
@@ -75,6 +86,8 @@ exports.uploadEstadoDuda = async (req, res) => {
     await Duda.updateOne({id_duda: dudaData.id_duda}, {$set: dudaNewData});
     res.json({status: 'Informacion Duda Actualizada'});
 }
+/** @function deleteDuda */
+// Delete the specific elements for Duda in mongo. 
 
 exports.deleteDuda = async (req, res) => {
     //console.log(req.body)

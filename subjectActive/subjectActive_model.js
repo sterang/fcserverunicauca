@@ -2,12 +2,20 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
+/** @function subjectActiveSchema */
+// Schema in subjectActive for model
+
 const subjectActiveSchema = new Schema({
     id_materiaActiva:{
         type: Number,
         required: true,
         unique: true,
         trim: true
+    },
+    count:{
+        type: Number,
+        required:true,
+        trim:true
     },
     nombre_materiaActiva:{
         type: String,

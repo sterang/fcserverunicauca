@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
+/** @function areaSubjectSchema */
+// Schema in areaSubjectSchema for model
+
 const areaSubjectSchema = new Schema({
     id_areaMateria:{
         type: Number,

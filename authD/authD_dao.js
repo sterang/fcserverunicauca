@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const docenteSchema = require('./authD_model');
-
+/** @function docenteSchema */
+// Dao for Schema statics in database
 docenteSchema.statics={
     create: function(data, cb){
         const teacher = new this(data);

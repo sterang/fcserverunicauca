@@ -1,4 +1,7 @@
 const Admin = require('./authAdmin_controller');
+/** @function RouterAdmin */
+// Routes for Activities
+
 module.exports=(router)=> {
     router.post('/createAdmin', Admin.createAdmin);
     router.post('/loginAdmin', Admin.loginAdmin);

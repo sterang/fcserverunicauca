@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const areaSubjectSchema = require('./areaSubject_model');
+/** @function areaSubjectSchema */
+// Dao for Schema statics in database
 
 areaSubjectSchema.statics={
     create: function(data, cb){

@@ -3,6 +3,9 @@ const jwt = require('jsonwebtoken');
 const bcrypt =require('bcryptjs');
 const SECRET_KEY = 'secretkey1234'
 
+/** @function createAdmin */
+// Create the specific elements for admin in mongo. 
+
 exports.createAdmin = async (req, res, next)=>{
     const newAdmin = {
         id_admin: req.body.id_admin,
@@ -17,6 +20,9 @@ exports.createAdmin = async (req, res, next)=>{
         res.json({Estado: 'Admin Creado' })
     })
 }
+/** @function loadAdmin */
+// Load the specific elements for admin in mongo. 
+
 
 exports.loginAdmin = (req, res, next)=>{
     //console.log('Entra al Bucle');

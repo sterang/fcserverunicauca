@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const schoolSchema = require('./school_model');
-
+/** @function schoolSchema */
+// Dao for Schema statics in database
 schoolSchema.statics={
     create: function(data, cb){
         const school = new this(data);

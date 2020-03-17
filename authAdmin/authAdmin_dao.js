@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const adminSchema = require('./authAdmin_model');
+/** @function adminSchema */
+// Dao for Schema statics in database
 
 adminSchema.statics={
     create: function(data, cb){

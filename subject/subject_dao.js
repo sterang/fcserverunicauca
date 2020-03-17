@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const subjectSchema = require('./subject_model');
-
+/** @function subjectSchema */
+// Dao for Schema statics in database
 subjectSchema.statics={
     create: function(data, cb){
         const subject = new this(data);

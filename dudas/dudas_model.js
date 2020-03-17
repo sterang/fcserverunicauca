@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
+/** @function dudasSchema */
+// Schema in doubts for model
+
 const dudaSchema = new Schema({
     id_duda:{
         type: Number,

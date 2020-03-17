@@ -2,6 +2,8 @@ const Docente = require('./authD_dao');
 const jwt = require('jsonwebtoken');
 const bcrypt =require('bcryptjs');
 const SECRET_KEY = 'secretkey1234'
+/** @function createDocente */
+// Create the specific elements for authD in mongo. 
 
 exports.createDocente = async (req, res, next)=>{
     const newDocente = {
@@ -21,7 +23,8 @@ exports.createDocente = async (req, res, next)=>{
         res.json({Estado: 'Docente Creado' })
     })
 }
-
+/** @function loginDocente */
+// Login authDocente.
 exports.loginDocente = (req, res, next)=>{
     //console.log('Entra al Bucle');
     const docenteData = {
@@ -58,6 +61,8 @@ exports.loginDocente = (req, res, next)=>{
         }
     })
 }
+/** @function loadDocente */
+// Load authDocente.
 
 exports.loadDocente = (req,res,next)=>{
     const docenteData = {
@@ -72,7 +77,8 @@ exports.loadDocente = (req,res,next)=>{
         }
     })
 }
-
+/** @function allDocente */
+// Load all teachers in platform.
 exports.allDocente = (req,res,next)=>{
     Docente.find(function(err, teachers){
         if(err) return res.status(500).send('Server Error');
@@ -84,6 +90,8 @@ exports.allDocente = (req,res,next)=>{
     })
 }
 
+/** @function uploadInfoPersonalDocente */
+// Upgrade information about teachers in platform.
 exports.uploadInfoPersonalDocente = async (req, res) => {
     const docenteData = {
         id_docente: req.body.id_docente
@@ -96,6 +104,8 @@ exports.uploadInfoPersonalDocente = async (req, res) => {
         return res.json({status: 'Informacion Personal Actualizada'});
     }));
 }
+/** @function uploadInfoLoginDocente */
+// Upgrade information about teachers in platform.
 
 exports.uploadInfoLoginDocente = async (req, res) => {
     const docenteData = {
@@ -110,6 +120,8 @@ exports.uploadInfoLoginDocente = async (req, res) => {
         return res.json({status: 'Informacion de Login Actualizada'});
     }));
 }
+/** @function uploadDocente */
+// Upgrade information about teachers in platform.
 
 exports.uploadDocente = async (req, res) => {
     const docenteData = {
@@ -126,6 +138,8 @@ exports.uploadDocente = async (req, res) => {
         return res.json({status: 'Informacion Docente Actualizada'});
     }));
 }
+/** @function deleteDocente */
+// Delete information about teachers in platform.
 
 exports.deleteDocente = async (req, res) => {
     //console.log(req.body)

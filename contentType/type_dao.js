@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const typeSchema = require('./type_model');
-
+/** @function typeSchema */
+// Dao for Schema statics in database
 typeSchema.statics={
     create: function(data, cb){
         const type = new this(data);

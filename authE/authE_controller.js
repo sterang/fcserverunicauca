@@ -2,6 +2,8 @@ const Estudiante = require('./authE_dao');
 const jwt = require('jsonwebtoken');
 const bcrypt =require('bcryptjs');
 const SECRET_KEY = 'secretkey1234'
+/** @function createEstudiante */
+// Create the specific elements for authE in mongo. 
 
 exports.createEstudiante = (req, res, next)=>{
     const newEstudiante = {
@@ -22,7 +24,8 @@ exports.createEstudiante = (req, res, next)=>{
         res.send({student})
     })
 }
-
+/** @function loginEstudiante */
+// Login authEstudiante.
 exports.loginEstudiante = (req, res, next)=>{
     //console.log('Entra al Bucle');
     const estudianteData = {
@@ -44,6 +47,8 @@ exports.loginEstudiante = (req, res, next)=>{
         }
     })
 }
+/** @function allStudents */
+// Load all students in platform.
 exports.allStudents = (req,res,next)=>{
     Estudiante.find(function(err, Students){
         if(err) return res.status(500).send('Server Error');
@@ -54,6 +59,8 @@ exports.allStudents = (req,res,next)=>{
         }
     })
 }
+/** @function loadStudents */
+// Load student in platform.
 
 exports.loadEstudiante = (req,res,next)=>{
     const estudianteData = {
@@ -68,6 +75,44 @@ exports.loadEstudiante = (req,res,next)=>{
         }
     })
 }
+/** @function allStudents */
+// Load all students in platform.
+exports.allStudents = (req,res,next)=>{
+    Estudiante.find(function(err, Students){
+        if(err) return res.status(500).send('Server Error');
+        if(!Students){
+            res.status(409).send({message:'Something Error'});
+        } else{
+            res.send(Students);
+        }
+    })
+}
+/** @function allStudents */
+// Load all students in platform.
+exports.allStudents = (req,res,next)=>{
+    Estudiante.find(function(err, Students){
+        if(err) return res.status(500).send('Server Error');
+        if(!Students){
+            res.status(409).send({message:'Something Error'});
+        } else{
+            res.send(Students);
+        }
+    })
+}
+/** @function allStudents */
+// Load all students in platform.
+exports.allStudents = (req,res,next)=>{
+    Estudiante.find(function(err, Students){
+        if(err) return res.status(500).send('Server Error');
+        if(!Students){
+            res.status(409).send({message:'Something Error'});
+        } else{
+            res.send(Students);
+        }
+    })
+}
+/** @function allEstudiantes */
+// Load all students in platform.
 
 exports.allEstudiantes = (req,res,next)=>{
     Estudiante.find(function(err, student){
@@ -79,6 +124,8 @@ exports.allEstudiantes = (req,res,next)=>{
         }
     })
 }
+/** @function uploadEstudiante */
+// Update student in platform.
 
 exports.uploadEstudiante = async (req, res) => {
     const estudianteData = {
@@ -96,6 +143,8 @@ exports.uploadEstudiante = async (req, res) => {
     await Estudiante.updateOne({id_estudiante: estudianteData.id_estudiante}, {$set: estudianteNewData}, {new: true});
     res.json({status: 'Informacion Estudiante Actualizada'});
 }
+/** @function deleteEstudiante */
+// Delete student in platform.
 
 exports.deleteEstudiante = async (req, res) => {
     //console.log(req.body)
@@ -105,14 +154,12 @@ exports.deleteEstudiante = async (req, res) => {
     await Estudiante.deleteOne({id_estudiante: estudianteData.id_estudiante});
     res.json({Estado: 'Estudiante Eliminado' })
 }
+/** @function conectionWithApp */
+// Response about 1 for conect with app
+
 exports.conectionWithApp = async (req, res) => {
     //console.log(req.body)
-    
     res.json(1);
 }
 
 
-//id_estudiante	tipo_usuario	nombre_estudiante	
-//apellido_estudiante	grado_estudiante	
-//curso_estudiante	id_colegio	nombre_usuario	
-//contraseña	correo_electronico

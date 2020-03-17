@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
+/** @function activitySchema */
+// Schema in activity for model
+
 const activitySchema = new Schema({
     id_actividad:{
         type: Number,
@@ -33,6 +36,11 @@ const activitySchema = new Schema({
         type: Number,
         required: true,
         trim: true
+    },
+    id_materiaActiva:{
+        type:Number,
+        required:true,
+        trim:true
     },
     id_competencia:{
         type: Number,

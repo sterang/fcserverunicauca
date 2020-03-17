@@ -1,4 +1,6 @@
 const Activities = require('./activities_controller');
+/** @function RoutesActivities */
+// Routes for Activities
 module.exports=(router)=> {
     router.post('/createActivity', Activities.createActivity);
     router.post('/loadActivity', Activities.loadActivity);

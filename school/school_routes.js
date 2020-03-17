@@ -1,4 +1,6 @@
 const School = require('./school_controller');
+/** @function RoutesSchool */
+// Routes for School
 module.exports=(router)=> {
     router.post('/createSchool', School.createSchool);
     router.post('/loadSchool', School.loadSchool);

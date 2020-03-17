@@ -1,4 +1,6 @@
 const ContentREA = require('./content_dao');
+/** @function createContentREA */
+// Create the specific elements for content in mongo. 
 
 exports.createContentREA = async (req, res, next)=>{
     const newContentREA = {
@@ -20,6 +22,9 @@ exports.createContentREA = async (req, res, next)=>{
         res.send({content});
     })
 }
+/** @function loadContentREA */
+// Load the specific elements for content in mongo. 
+
 exports.loadContentREA= (req,res,next)=>{
     const contentData={
         id_CREA: req.body.id_contenidoREA
@@ -34,6 +39,8 @@ exports.loadContentREA= (req,res,next)=>{
         }
     })
 }
+/** @function allContent */
+// Load all the specific elements for content in mongo. 
 
 exports.allContent = (req,res,next)=>{
     ContentREA.find(function(err, contents){
@@ -45,6 +52,9 @@ exports.allContent = (req,res,next)=>{
         }
     })
 }
+/** @function allContentMovilG */
+// Load all the specific elements for content in mongo. 
+
 exports.allContentMovilG = async (req,res,next)=>{
     console.log("Entra Aqui");
     var mandaR=0;
@@ -65,8 +75,11 @@ exports.allContentMovilG = async (req,res,next)=>{
             storageAllInformation.push(filtroDatos[i]);
         }
     }
+    console.log(storageAllInformation);
     res.send(storageAllInformation);
 }
+/** @function SearchContentREA */
+// Search all the specific elements for content in mongo. 
 
 exports.SearchContentREA= (req,res,next)=>{
     const contentData={
@@ -82,6 +95,9 @@ exports.SearchContentREA= (req,res,next)=>{
         }
     })
 }
+/** @function allContentMovil */
+// Load all the specific elements for content in mongo. 
+
 exports.allContentMovil = (req,res,next)=>{
     ContentREA.find(function(err, contents){
         if(err) return res.status(500).send('Server Error');
@@ -92,11 +108,15 @@ exports.allContentMovil = (req,res,next)=>{
         }
     })
 }
+/** @function newLoadContentREA */
+// Load all the specific elements for content in mongo. 
 
 exports.newLoadContentREA = async (req, res) => {
     const contentsData = await ContentREA.find();
     res.json(contentsData);
 }
+/** @function deleteContentREA */
+// Delete the specific elements for content in mongo. 
 
 exports.deleteContentREA = async (req, res) => {
     //console.log(req.body)
@@ -107,6 +127,9 @@ exports.deleteContentREA = async (req, res) => {
         return res.json({Estado: 'Contenido Eliminado'});
     }));
 }
+/** @function uploadEstadoContentREA */
+// Upload the specific elements for content in mongo. 
+
 
 exports.uploadEstadoContentREA = async (req,res) => {
     const contentData = {
@@ -119,6 +142,8 @@ exports.uploadEstadoContentREA = async (req,res) => {
         return res.json({status: 'Estado Contenido Actualizado'});
     }));
 } 
+/** @function uploadURLContentREA */
+// Upload the specific elements for content in mongo. 
 
 exports.uploadURLContentREA = async (req,res) => {
     const contentData = {

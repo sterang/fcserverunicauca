@@ -1,4 +1,6 @@
 const Docente = require('./authD_controller');
+/** @function RoutesDocente */
+// Routes for Docente
 module.exports=(router)=> {
     router.post('/createDocente', Docente.createDocente);
     router.post('/loginDocente', Docente.loginDocente);

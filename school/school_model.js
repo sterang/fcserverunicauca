@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
+/** @function schoolSchema */
+// Schema in shool for model
+
 const schoolSchema = new Schema({
     id_colegio:{
         type: Number,

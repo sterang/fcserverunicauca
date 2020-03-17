@@ -1,4 +1,6 @@
 const Duda = require('./dudas_controller');
+/** @function RoutesDudas */
+// Routes for Dudas
 module.exports=(router)=> {
     router.post('/createDuda', Duda.createDuda);
     router.post('/loadDuda', Duda.loadDuda);

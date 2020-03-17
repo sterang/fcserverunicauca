@@ -1,5 +1,6 @@
 const Activities = require('./activities_dao');
-
+/** @function createActivity */
+// Create the specific elements for activity in mongo. 
 exports.createActivity = (req,res,next)=>{
     const newActivities = {
         id_actividad: req.body.id_actividad,
@@ -8,6 +9,7 @@ exports.createActivity = (req,res,next)=>{
         id_docente: req.body.id_docente,
         id_materia: req.body.id_materia,
         id_grado: req.body.id_grado,
+        id_materiaActiva: req.body.id_materiaActiva,
         id_competencia: req.body.id_competencia,
         titulo_actividad: req.body.titulo_actividad,
         descripcion_actividad: req.body.descripcion_actividad,
@@ -71,6 +73,8 @@ exports.createActivity = (req,res,next)=>{
         res.send({activity});
     })
 }
+/** @function loadActivity */
+// Load the specific elements for activity in mongo. 
 
 exports.loadActivity = (req, res, next)=>{
     const activityData={
@@ -86,6 +90,9 @@ exports.loadActivity = (req, res, next)=>{
         }
     })
 }
+/** @function allActivities */
+// Load all activities of mongo. 
+
 exports.allActivities = (req,res,next)=>{
     Activities.find(function(err, activities){
         if(err) return res.status(500).send('Server Error');
@@ -96,7 +103,8 @@ exports.allActivities = (req,res,next)=>{
         }
     })
 }
-
+/** @function allActivitiesMovil */
+// Load all activities of mongo for devices mobile. 
 exports.allActivitiesMovil = async(req,res,next)=>{
     const studentData = {
         id_grado: req.body.id_grado,
@@ -127,7 +135,8 @@ exports.allActivitiesMovil = async(req,res,next)=>{
         }
         res.send(arrayFilterFinal);
 }
-
+/** @function uploadActivity */
+// Update activity of mongo for app web. 
 exports.uploadActivity = async (req, res) => {
     const activityData={
         id_actividad: req.body.id_actividad,
@@ -140,6 +149,7 @@ exports.uploadActivity = async (req, res) => {
         titulo_actividad: req.body.titulo_actividad,
         descripcion_actividad: req.body.descripcion_actividad,
         id_grado: req.body.id_grado,
+        id_materiaActiva: req.body.id_materiaActiva,
         id_contenidoREA: req.body.id_contenidoREA,
         video: req.body.video,
         urlvideo: req.body.urlvideo,
@@ -196,7 +206,8 @@ exports.uploadActivity = async (req, res) => {
         return res.json({status: 'Actividad Actualizada'});
     }));
 }
-
+/** @function updloadSectionsActivity */
+// Update activity of mongo for app web. 
 exports.uploadSectionsActivity = async (req, res) => {
     const activityData={
         id_actividad: req.body.id_actividad,
@@ -209,7 +220,8 @@ exports.uploadSectionsActivity = async (req, res) => {
         return res.json({status: 'Seccion de la Actividad Actualizada'});
     }));
 }
-
+/** @function deleteActivity */
+// Delete activity of mongo for app web. 
 exports.deleteActivity = async (req, res) => {
     //console.log(req.body)
     const activityData = {

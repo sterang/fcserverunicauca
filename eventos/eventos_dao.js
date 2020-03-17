@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const eventosSchema = require('./eventos_model');
-
+/** @function eventosSchema */
+// Dao for Schema statics in database
 eventosSchema.statics={
     create: function(data, cb){
         const evento = new this(data);

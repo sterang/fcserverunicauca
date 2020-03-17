@@ -1,4 +1,6 @@
 const ContentREA = require('./content_controller');
+/** @function RoutesContent */
+// Routes for Countent
 module.exports=(router)=> {
     router.post('/createContentREA', ContentREA.createContentREA);
     router.post('/loadContentREA', ContentREA.loadContentREA);

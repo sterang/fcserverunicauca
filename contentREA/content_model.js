@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
+/** @function contentSchema */
+// Schema in content for model
+
 const contentSchema = new Schema({
     id_CREA:{
         type: Number,

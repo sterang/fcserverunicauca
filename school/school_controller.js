@@ -1,4 +1,6 @@
 const School = require('./school_dao');
+/** @function createSchool */
+// Create the specific elements for School in mongo. 
 
 exports.createSchool = async (req, res, next)=>{
     const newSchool = {
@@ -19,6 +21,9 @@ exports.createSchool = async (req, res, next)=>{
         res.send({school});
     })
 }
+/** @function loadSchool */
+// Load the specific elements for School in mongo. 
+
 exports.loadSchool= (req,res,next)=>{
     const schoolData={
         id_colegio: req.body.id_colegio
@@ -32,6 +37,9 @@ exports.loadSchool= (req,res,next)=>{
         }
     })
 }
+/** @function allSchools */
+// Load all the specific elements for School in mongo. 
+
 exports.allSchools = (req,res,next)=>{
     School.find(function(err, schools){
         if(err) return res.status(500).send('Server Error');
@@ -42,11 +50,15 @@ exports.allSchools = (req,res,next)=>{
         }
     })
 }
+/** @function newLoadSchools */
+// Load all the specific elements for School in mongo. 
 
 exports.newLoadSchools = async (req, res) => {
     const schoolsData = await School.find();
     res.json(schoolsData);
 }
+/** @function uploadSchool */
+// Upload the specific elements for School in mongo. 
 
 exports.uploadSchool = async (req, res) => {
     const schoolData = {
@@ -66,6 +78,8 @@ exports.uploadSchool = async (req, res) => {
         return res.json({status: 'Informacion Colegio Actualizado'});
     }));
 }
+/** @function deleteSchool */
+// Delete the specific elements for School in mongo. 
 
 exports.deleteSchool = async (req, res) => {
     //console.log(req.body)

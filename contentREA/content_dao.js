@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const contentSchema = require('./content_model');
-
+/** @function contentSchema */
+// Dao for Schema statics in database
 contentSchema.statics={
     create: function(data, cb){
         const content = new this(data);

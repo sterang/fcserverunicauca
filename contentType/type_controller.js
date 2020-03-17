@@ -1,4 +1,6 @@
 const Type = require('./type_dao');
+/** @function createType */
+// Create the specific elements for Type of Content in mongo. 
 
 exports.createType = async (req, res, next)=>{
     const newType = {
@@ -11,6 +13,8 @@ exports.createType = async (req, res, next)=>{
         res.send({type});
     })
 }
+/** @function loadType*/
+// Load the specific elements for Type of Content in mongo. 
 exports.loadType = (req,res,next)=>{
     const typeData={
         id_tipoContenido: req.body.id_tipoContenido
@@ -24,6 +28,8 @@ exports.loadType = (req,res,next)=>{
         }
     })
 }
+/** @function allTypes */
+// Load all the specific elements for Type of Content in mongo. 
 exports.allTypes = (req,res,next)=>{
     Type.find(function(err, type){
         if(err) return res.status(500).send('Server Error');
@@ -34,12 +40,14 @@ exports.allTypes = (req,res,next)=>{
         }
     })
 }
-
+/** @function newLoadTypes */
+// Load the specific elements for Type of Content in mongo. 
 exports.newLoadTypes = async (req, res) => {
     const typesData = await Type.find();
     res.json(typesData);
 }
-
+/** @function deleteType*/
+// Delete the specific elements for Type of Content in mongo. 
 exports.deleteType = async (req, res) => {
     //console.log(req.body)
     const typeData = {

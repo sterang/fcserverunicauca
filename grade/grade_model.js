@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
+/** @function gradeSchema */
+// Schema in grade for model
+
 const gradeSchema = new Schema({
     id_grado:{
         type: Number,

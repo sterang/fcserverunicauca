@@ -1,4 +1,6 @@
 const Grade = require('./grade_dao');
+/** @function createGrade */
+// Create the specific elements for Grade in mongo. 
 
 exports.createGrade = async (req, res, next)=>{
     const newGrade = {
@@ -11,6 +13,9 @@ exports.createGrade = async (req, res, next)=>{
         res.send({grade});
     })
 }
+/** @function loadGrade */
+// Load the specific elements for Grade in mongo. 
+
 exports.loadGrade= (req,res,next)=>{
     const gradeData={
         id_grado: req.body.id_grado
@@ -24,6 +29,9 @@ exports.loadGrade= (req,res,next)=>{
         }
     })
 }
+/** @function allGrades */
+// Load all the specific elements for Grade in mongo. 
+
 exports.allGrades = (req,res,next)=>{
     Grade.find(function(err, grades){
         if(err) return res.status(500).send('Server Error');
@@ -34,11 +42,14 @@ exports.allGrades = (req,res,next)=>{
         }
     })
 }
-
+/** @function newLoadGrades */
+// Load all the specific elements for Grade in mongo. 
 exports.newLoadGrades = async (req, res) => {
     const gradesData = await Grade.find();
     res.json(gradesData);
 }
+/** @function deleteGrade */
+// Delete the specific elements for Grade in mongo. 
 
 exports.deleteGrade = async (req, res) => {
     //console.log(req.body)

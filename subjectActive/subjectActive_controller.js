@@ -1,8 +1,11 @@
 const SubjectActive = require('./subjectActive_dao');
+/** @function createSubjectActive */
+// Create the specific elements for Subject in mongo. 
 
 exports.createSubjectActive = async (req, res, next)=>{
     const newSubjectActive = {
         id_materiaActiva: req.body.id_materiaActiva,
+        count: req.body.count,
         nombre_materiaActiva: req.body.nombre_materiaActiva,
         id_materia: req.body.id_materia,
         id_grado: req.body.id_grado,
@@ -16,6 +19,9 @@ exports.createSubjectActive = async (req, res, next)=>{
         res.json({Estado: 'Materia Activa Creada' })
     })
 }
+/** @function loadSubjectActive */
+// Load the specific elements for Subject in mongo. 
+
 exports.loadSubjectActive= (req,res,next)=>{
     const subjectActiveData={
         id_materiaActiva: req.body.id_materiaActiva
@@ -29,6 +35,9 @@ exports.loadSubjectActive= (req,res,next)=>{
         }
     })
 }
+/** @function allSubjectActives */
+// Load all the specific elements for Subject in mongo. 
+
 exports.allSubjectActives = (req,res,next)=>{
     SubjectActive.find(function(err, subjectActives){
         if(err) return res.status(500).send('Server Error');
@@ -39,6 +48,8 @@ exports.allSubjectActives = (req,res,next)=>{
         }
     })
 }
+/** @function allSubjectActivesMovil */
+// Load all the specific elements for Subject in mongo. 
 
 exports.allSubjectActivesMovil = async(req,res,next)=>{
     const studentData = {
@@ -74,11 +85,15 @@ exports.allSubjectActivesMovil = async(req,res,next)=>{
     }
     
 }
+/** @function newLoadSubjectActives */
+// Load all the specific elements for Subject in mongo. 
 
 exports.newLoadSubjectActives = async (req, res) => {
     const subjectActivesData = await SubjectActive.find();
     res.json(subjectActivesData);
 }
+/** @function deleteSubjectActive */
+// Delete the specific elements for Subject in mongo. 
 
 exports.deleteSubjectActive = async (req, res) => {
     //console.log(req.body)

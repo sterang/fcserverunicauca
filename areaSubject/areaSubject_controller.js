@@ -1,5 +1,6 @@
 const AreaSubject = require('./areaSubject_dao');
-
+/** @function createAreaSubject */
+// Create Area Subject in mongoDB
 exports.createAreaSubject = async (req, res, next)=>{
     const newAreaSubject = {
         id_areaMateria: req.body.id_areaMateria,
@@ -13,6 +14,8 @@ exports.createAreaSubject = async (req, res, next)=>{
         res.send({areaSubject});
     })
 }
+/** @function loadAreaSubject */
+// Load Area Subject in mongoDB
 exports.loadAreaSubject= (req,res,next)=>{
     const areaSubjectData={
         id_areaMateria: req.body.id_areaMateria
@@ -26,6 +29,8 @@ exports.loadAreaSubject= (req,res,next)=>{
         }
     })
 }
+/** @function allAreaSubjects */
+// Load all Areas Subject in mongoDB
 exports.allAreaSubjects = (req,res,next)=>{
     AreaSubject.find(function(err, areaSubjects){
         if(err) return res.status(500).send('Server Error');
@@ -36,11 +41,15 @@ exports.allAreaSubjects = (req,res,next)=>{
         }
     })
 }
+/** @function newLoadAreaSubjects */
+// Load new Areas Subject in mongoDB
 
 exports.newLoadAreaSubjects = async (req, res) => {
     const areaSubjectsData = await AreaSubject.find();
     res.json(areaSubjectsData);
 }
+/** @function deleteAreaSubject */
+// Delete Area Subject in mongoDB
 
 exports.deleteAreaSubject = async (req, res) => {
     //console.log(req.body)

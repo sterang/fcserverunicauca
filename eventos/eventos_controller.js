@@ -8,6 +8,9 @@ async function  obtenerLast () {
     console.log(data.length);
     return data.length;
 }
+/** @function createEventos */
+// Create the specific elements for Eventos in mongo. 
+
 exports.createEventos= async(req,res,next)=>  {
     var last = await obtenerLast();
     console.log("El ultimo allado")
@@ -60,6 +63,9 @@ exports.createEventos= async(req,res,next)=>  {
         res.send(evento);
     })
 }
+/** @function loadEvento */
+// Load the specific elements for Eventos in mongo. 
+
 exports.loadEvento = (req,res,next)=>{
     const eventoData = {
         id_estudiante: req.body.id_estudiante,
@@ -73,6 +79,9 @@ exports.loadEvento = (req,res,next)=>{
         }
     })
 }
+/** @function allEventos */
+// Load all the specific elements for Eventos in mongo. 
+
 exports.allEventos = async(req,res,next)=>{
     const allEventos = await Eventos.find(function(err, eventStudents){
         if(err) return res.status(500).send('Server Error');
@@ -84,6 +93,9 @@ exports.allEventos = async(req,res,next)=>{
     })
     
 }
+/** @function allEventsForAngular */
+// Load all the specific elements for Eventos in mongo. 
+
 exports.allEventsForAngular=async(req,res,next)=>{
     var mandaRes = 0;
     const allEventos = await Eventos.find(function(err, eventStudents){
@@ -153,6 +165,8 @@ exports.allEventsForAngular=async(req,res,next)=>{
 
     }
 }
+/** @function generateMetrics */
+// Generate metrics the specific elements for Eventos in mongo. 
 
 exports.generateMetrics=(req,res,next)=>{
     const contentData={
@@ -169,6 +183,8 @@ exports.generateMetrics=(req,res,next)=>{
         }
     })
 }
+/** @function uploadEvento*/
+// Upload the specific elements for Eventos in mongo. 
 
 exports.uploadEvento = async (req, res) => {
     const eventoData={
@@ -200,6 +216,8 @@ exports.uploadEvento = async (req, res) => {
     await Eventos.updateOne({id_evento: eventoData.id_evento}, {$set: eventoNewData}, {new: true});
     res.json({status: 'Evento Actualizado'});
 }
+/** @function uploadEstadoEvento*/
+// Upload the specific elements for Eventos in mongo. 
 
 exports.uploadEstadoEvento = async (req, res) => {
     const eventoData={

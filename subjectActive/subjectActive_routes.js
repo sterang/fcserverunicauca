@@ -1,4 +1,6 @@
 const SubjectActive = require('./subjectActive_controller');
+/** @function RoutesSubjectActive */
+// Routes for SubjectActive
 module.exports=(router)=> {
     router.post('/createSubjectActive', SubjectActive.createSubjectActive);
     router.post('/loadSubjectActive', SubjectActive.loadSubjectActive);

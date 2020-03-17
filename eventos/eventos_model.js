@@ -3,8 +3,9 @@ require('mongoose-long')(mongoose);
 const Schema = mongoose.Schema;
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
-//Carga Los Tipos de Schemas
-//var SchemasTypes = mongoose.Schema.Types;
+/** @function eventoSchema */
+// Schema in events for model
+
 const eventoSchema = new Schema({
     id_evento:{
         type: mongoose.Schema.Types.Long,
